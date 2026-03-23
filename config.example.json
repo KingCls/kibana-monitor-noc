@@ -1,0 +1,17 @@
+{
+    "___INSTRUCOES___": "=== CONFIGURACAO DO MONITOR NOC ===",
+    "kibana_url": "https://seu-kibana/app/home#/",
+    "___LOGIN___": "Credenciais de acesso ao Kibana",
+    "usuario": "",
+    "senha": "",
+    "___TEMPO___": "Intervalo entre verificacoes (em minutos)",
+    "intervalo_minutos": 5,
+    "___PORTA___": "Porta do dashboard local",
+    "porta_dashboard": 5000,
+    "___SOM___": "Tocar som ao detectar erro novo (true/false)",
+    "tocar_som": true,
+    "___METODO___": "Como detectar mudancas: 'conteudo' ou 'contador'",
+    "metodo_deteccao": "conteudo",
+    "___LINKS___": "Cole aqui os links do Kibana que voce monitora",
+    "links": []
+}
