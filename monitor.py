@@ -1261,8 +1261,6 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             self.servir_dashboard()
         elif self.path == "/api/status":
             self.servir_api_status()
-        elif self.path == "/api/historico":
-            self.servir_api_historico()
         elif self.path == "/api/config":
             self.servir_api_config()
         else:
@@ -1329,25 +1327,6 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write(json.dumps(dados, ensure_ascii=False).encode("utf-8"))
-
-    def servir_api_historico(self):
-        with historico_lock:
-            dados = dict(historico_dia)
-
-        lista = []
-        for chave, valor in dados.items():
-            item = dict(valor) if isinstance(valor, dict) else {"mensagem": str(valor)}
-            item["hash"] = chave
-            lista.append(item)
-
-        lista.sort(key=lambda x: x.get("hora_detectado", ""), reverse=True)
-
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json; charset=utf-8")
-        self.send_header("Cache-Control", "no-cache")
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.end_headers()
-        self.wfile.write(json.dumps(lista, ensure_ascii=False).encode("utf-8"))
 
     def servir_api_config(self):
         try:

@@ -574,20 +574,6 @@
                 </div>
                 <div id="errosNovosList"></div>
             </section>
-
-            <section class="section">
-                <div class="section-header">
-                    <div class="section-title">Historico do Dia <span class="badge" id="countHistorico">0</span></div>
-                </div>
-                <div class="table-wrap">
-                    <div class="table-scroll" id="historicoScroll">
-                        <table class="history-table">
-                            <thead><tr><th style="width:80px">Hora</th><th style="width:80px">Detectado</th><th style="width:180px">Link</th><th>Mensagem</th><th style="width:60px">Abrir</th></tr></thead>
-                            <tbody id="historicoBody"><tr><td colspan="5" class="table-empty">Nenhum erro registrado hoje</td></tr></tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
         </div>
 
         <div id="tabConfig" class="tab-panel">
@@ -862,18 +848,6 @@ function renderizarErrosNovos(erros){
     list.innerHTML=html;
 }
 
-// ========== RENDER: HISTORY ==========
-function renderizarHistorico(hist){
-    const tb=document.getElementById('historicoBody'),cnt=document.getElementById('countHistorico');
-    if(!hist||!hist.length){cnt.textContent='0';tb.innerHTML='<tr><td colspan="5" class="table-empty">Nenhum erro registrado hoje &#10003;</td></tr>';return;}
-    cnt.textContent=hist.length;let html='';
-    hist.forEach(i=>{
-        const lh=i.link_kibana?`<a href="${safeHref(i.link_kibana)}" target="_blank">Abrir</a>`:'-';
-        html+=`<tr><td class="col-time">${escapeHtml(i.timestamp_erro||'-')}</td><td class="col-time" style="color:var(--yellow)">${escapeHtml(i.hora_detectado||'-')}</td><td style="font-weight:500;color:var(--text-0)">${escapeHtml(i.consulta||'-')}</td><td class="col-msg" title="${escapeHtml(i.mensagem||'')}">${escapeHtml(truncarMsg(i.mensagem))}</td><td class="col-link">${lh}</td></tr>`;
-    });
-    tb.innerHTML=html;
-}
-
 // ========== STATUS BAR ==========
 function atualizarStatusBar(d){
     const dot=document.getElementById('statusDot'),txt=document.getElementById('statusText'),bdg=document.getElementById('badgeErros');
@@ -1086,13 +1060,12 @@ async function atualizar(){
     try{
         const rs=await fetch('/api/status');if(!rs.ok)throw new Error('HTTP '+rs.status);
         const d=await rs.json();
-        const rh=await fetch('/api/historico');const h=await rh.json();
         const cfg=await carregarConfig();
         if(!dashboardConectado){dashboardConectado=true;tentativasReconexao=0;document.getElementById('overlayError').classList.remove('visible');}
         const epl={};(d.erros_novos||[]).forEach(e=>{if(e.consulta)epl[e.consulta]=(epl[e.consulta]||0)+1;});
         atualizarStatusBar(d);atualizarMetricas(d);atualizarUptime(d);
         _ultimosDadosRender={consultasStatus:d.consultas_status||{},config:cfg,errosPorLink:epl};
-        renderizarConsultas(d.consultas_status||{},cfg,epl);renderizarErrosNovos(d.erros_novos||[]);renderizarHistorico(h);
+        renderizarConsultas(d.consultas_status||{},cfg,epl);renderizarErrosNovos(d.erros_novos||[]);
         verificarErrosNovos(d.erros_novos||[]);
     }catch(e){console.error('Erro:',e);tentativasReconexao++;if(tentativasReconexao>3){dashboardConectado=false;document.getElementById('overlayError').classList.add('visible');}}
 }

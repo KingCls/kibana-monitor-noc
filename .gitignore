@@ -8,3 +8,5 @@ historico/
 
 # Configuracao local com segredos
 config.json
+config copy.json
+
