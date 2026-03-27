@@ -1,0 +1,22 @@
+{
+    "porta_dashboard": 5000,
+    "intervalo_minutos": 5,
+    "metodo_deteccao": "conteudo",
+    "tocar_som": true,
+    "kibana_url": "",
+    "usuario": "",
+    "senha": "",
+    "opsgenie": {
+        "ativo": true,
+        "api_key": "",
+        "intervalo_segundos": 15,
+        "query": "status=open"
+    },
+    "grafana": {
+        "ativo": true,
+        "url": "",
+        "api_key": "",
+        "intervalo_segundos": 30
+    },
+    "links": []
+}

@@ -1,12 +1,5 @@
 __pycache__/
-*.py[cod]
-
-# Arquivos gerados em runtime
-logs/
 cache/
 historico/
-
-# Configuracao local com segredos
-config.json
-config copy.json
-
+logs/
+monitor.py.bak
