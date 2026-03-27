@@ -1,0 +1,321 @@
+2026-03-23 13:43:05 - === MONITORAMENTO INICIADO ===
+2026-03-23 13:43:05 - === SERVIDOR WEB INICIADO ===
+2026-03-23 13:43:05 - NOVO | Carteira-ws -> WS-Mobile - Trademap - LEVEL-ERROR | Uncaught exception
+2026-03-23 13:43:06 - NOVO | LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro | Error no https://cheetah-prod-internal2.rockettrader.com.br/v2/unsubscribe - HTTP 401: Server returned HTTP response code: 401 for URL: https://cheetah-prod-internal2.rockettrader.com.br/v2/unsubscrib
+2026-03-23 13:43:06 - NOVO | LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro | Erro ao tentar 3 vezes subscrever o canal QUOTE | items [BOVAE173:1, BBASX251:1, BBASE245:1] | fields [preco_ultimo, contract_multiplier, tick_size_denominator, preco_fechamento, preco_after, formaCot
+2026-03-23 13:43:06 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][CONNECTION_CREATION_FAILED] Ocorreu um erro tratado na requisição em connection-create: Usuário ou senha invalidos.
+2026-03-23 13:43:06 - NOVO | Level ERROR -> api-financial-core -> M.E | Erro ao processar mensagem no tópico: recalculate-account-balances-topic, key: c2c44d6a-55a2-4880-92c8-5916285182f2-15780c7a-cd0d-4978-a4aa-20df3905e560
+2026-03-23 13:43:06 - NOVO | Level ERROR -> api-financial-core -> M.E | Servlet.service() for servlet [dispatcherServlet] in context with path [/financial-core] threw exception [Filter execution threw an exception] with root cause
+2026-03-23 13:43:06 - NOVO | Level ERROR -> api-financial-core -> M.E | Erro ao processar requisição: GET /financial-core/v1/connection/financial-institutions - Duração: 7ms
+2026-03-23 13:43:06 - NOVO | Level ERROR -> api-financial-core -> M.E | [COOKIE-UTILS] Falha ao buscar userId na sessão
+2026-03-23 13:43:06 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][CANT_HANDLE_INVOICE_PAYMENT_TRANSACTION_EXCEPTION] Ocorreu um erro tratado na requisição em delete-transaction-updating-deleted: Não é permitido manipular uma transação de pagamento de fatura.
+2026-03-23 13:43:06 - NOVO | Level ERROR -> api-financial-core -> M.E | Backoff FixedBackOff{interval=1000, currentAttempts=4, maxAttempts=3} exhausted for recalculate-account-balances-topic-14@2982
+2026-03-23 13:43:06 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][CATEGORY_CHANGE_DENIED_EXCEPTION] Ocorreu um erro tratado na requisição em : Não é permitido alterar a categoria dessa transação
+2026-03-23 13:43:07 - NOVO | Trademap-ws & Trademap-ws-iex -> WS-Portal - Trademap - LEVEL-ERROR | Não foi possível obter o sistema operacional.
+2026-03-23 13:43:08 - NOVO | Level ERROR acima de 1 -> CARTEIRAS -> b3-investor-api-consumer | Ocorreu um erro no processo. Stacktrace: javax.net.ssl.SSLHandshakeException: Received fatal alert: handshake_failure
+2026-03-23 13:43:08 - NOVO | Level ERROR -> snapshot-fii-job -> Marketdata | Cannot download file from: https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=760154: {}
+2026-03-23 13:43:08 - NOVO | Level ERROR -> snapshot-fii-job -> Marketdata | Month XML failed for cnpj: 32774914000104
+2026-03-23 13:43:08 - NOVO | Level ERROR -> snapshot-fii-job -> Marketdata | Quarter XML failed for cnpj: 32065364000146
+2026-03-23 13:43:08 - NOVO | Level ERROR -> snapshot-fii-job -> Marketdata | Unknown error for cnpj 41269527000101:{}
+2026-03-23 13:43:08 - NOVO | Level ERROR -> snapshot-fii-job -> Marketdata | Yearly XML failed for cnpj: 35507262000121
+2026-03-23 13:43:09 - NOVO | LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro | Error no https://cheetah-prod-internal2.rockettrader.com.br/v2/unsubscribe - HTTP 401: Server returned HTTP response code: 401 for URL: https://cheetah-prod-internal2.rockettrader.com.br/v2/unsubscrib
+2026-03-23 13:43:10 - NOVO | Level ERROR -> api-granamap-transaction -> M.E | Ocorreu um erro na requisição
+2026-03-23 13:43:10 - NOVO | Level Error -> b3-options-rocket-data-adapter-application -> Cheetah-Pro | Error on streaming
+2026-03-23 13:43:10 - NOVO | LEVEL ERROR > Custody-command-data-adapter -> Cheetah-Pro | Error no https://cheetah-prod-internal1.rockettrader.com.br/v2/unsubscribe - HTTP 401: Server returned HTTP response code: 401 for URL: https://cheetah-prod-internal1.rockettrader.com.br/v2/unsubscrib
+2026-03-23 13:43:10 - NOVO | Level ERROR -> stock-cache-job -> Marketdata | uncaughtException: Thread[main,5,main]
+2026-03-23 13:43:10 - NOVO | Level ERROR -> stock-cache-job -> Marketdata | Uncaught throwable at application cycle execution
+2026-03-23 13:43:11 - NOVO | Level ERROR -> daily-anbima-job -> Marketdata | Uncaught throwable at application run
+2026-03-23 13:43:12 - NOVO | LEVEL ERROR -> prop-desk-rel-perf-data-adapter -> Cheetah-Pro | Error no https://cheetah-prod-internal2.rockettrader.com.br/v2/unsubscribe - HTTP 401: Server returned HTTP response code: 401 for URL: https://cheetah-prod-internal2.rockettrader.com.br/v2/unsubscrib
+2026-03-23 13:43:12 - NOVO | LEVEL ERROR -> prop-desk-rel-perf-data-adapter -> Cheetah-Pro | Streaming nulo ou nao conectado
+2026-03-23 13:43:13 - NOVO | LEVEL ERROR > index-asterisk-application | Error no https://cheetah-stage.trademap.com.br/v2/subscribe - HTTP 412: Server returned HTTP response code: 412 for URL: https://cheetah-stage.trademap.com.br/v2/subscribe
+2026-03-23 13:43:13 - NOVO | LEVEL ERROR > index-asterisk-application | Error on streaming
+2026-03-23 13:43:13 - NOVO | LEVEL ERROR > basket-asterisk-application (Vanilla) | Error no https://cheetah-stage.trademap.com.br/v2/subscribe - HTTP 412: Server returned HTTP response code: 412 for URL: https://cheetah-stage.trademap.com.br/v2/subscribe
+2026-03-23 13:43:13 - NOVO | league-ws - RocketTrader -> LEVEL ERROR | [sendLeagueSignupConfirmation] Falha no envio para fila (ExecutionException): java.util.NoSuchElementException: Unable to activate object
+2026-03-23 13:43:13 - NOVO | league-ws - RocketTrader -> LEVEL ERROR | Erro ao enviar e-mail de confirmação - investidorId=3501652, leagueId=3189
+2026-03-23 13:43:13 - NOVO | Level Error - order-processor-daemon-simulator | cancelamento# idOrderExchange nulo e nao encontrado no cache. idOrderFixServer=VLMB.260323023000006910921 idOrder=172233019
+2026-03-23 13:43:14 - NOVO | LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro | Streaming nulo ou nao conectado
+2026-03-23 13:43:14 - NOVO | LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro | Error no https://cheetah-prod-internal1.rockettrader.com.br/v2/unsubscribe - HTTP 401: Server returned HTTP response code: 401 for URL: https://cheetah-prod-internal1.rockettrader.com.br/v2/unsubscrib
+2026-03-23 13:43:14 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-4 - (PRO) | Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because 
+2026-03-23 13:43:14 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-4 - (PRO) | order com erro: ORDER-MONITOR
+2026-03-23 13:43:14 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-6 - (PRO) | Item dedo duro invalido (formato esperado: TIPO.ATIVO ou TIPO.PERIODO.ATIVO): [#f819d]
+2026-03-23 13:43:15 - NOVO | LEVEL ERROR > fundamentos-data-adapter-application - Cheetah-Pro | Error on streaming
+2026-03-23 13:43:16 - NOVO | LEVEL ERROR > ors-web-socket-application - RocketTrader | Authentication failed for WebSocket session 546faafc: Reconnection validation failed
+2026-03-23 13:43:18 - NOVO | LEVEL ERROR -> Internal-Application-Rocket-1 - (PRO) | QUOTE-RAW-BMF: erro ao dar UNSUB
+2026-03-23 13:43:21 - NOVO | Nitro-ws - RocketTrader -> LEVEL ERROR | item de data não encontrado na sessão
+2026-03-23 13:43:21 - NOVO | LEVEL ERROR -> fix-custody-btg-daemon -> TRADEMAP | INSERT INTO
+2026-03-23 13:43:21 - NOVO | LEVEL ERROR -> fix-custody-btg-daemon -> TRADEMAP | Houve um erro ao tentar executar a mensagem recebida: ActiveMQMapMessage {commandId = 4109236, responseRequired = false, messageId = ID:fix-server-btg-multibroker-6785ccd96c-2pbbd-34415-1772620805728-
+2026-03-23 13:43:21 - NOVO | LEVEL ERROR -> Custody-command-data-adapter -> Cheetah-Vanilla | Streaming nulo ou nao conectado
+2026-03-23 13:43:21 - NOVO | LEVEL ERROR -> Custody-command-data-adapter -> Cheetah-Vanilla | Error no http://cheetah-vanilla1.trademap.com.br/unsubscribe
+2026-03-23 13:43:23 - NOVO | Trademap-ws (RocketTrader) -> Level Error | Uncaught exception
+2026-03-23 13:43:23 - NOVO | Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker | Stop disparado para uma ordem que nao foi encontrada no banco de dados: SOURCE_REF: VLMB.260323228000030106529 Event: SimulatorCEPEvent [idStrategy=17685276, idSourceReference=VLMB.2603232280000301065
+2026-03-23 13:43:23 - NOVO | Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker | Falha na autenticação!
+2026-03-23 13:43:23 - NOVO | Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker | Unable to reconnect
+2026-03-23 13:43:23 - NOVO | Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker |    Response: CheetahResponse[token=, cheetah_address=, success=false]
+2026-03-23 13:43:23 - NOVO | Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker | Error no https://cheetah-prod-internal.rockettrader.com.br/auth - HTTP 503: Server returned HTTP response code: 503 for URL: https://cheetah-prod-internal.rockettrader.com.br/auth
+2026-03-23 13:43:23 - NOVO | Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker | Error on streaming
+2026-03-23 13:43:23 - NOVO | Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker | Exceção durante streaming
+2026-03-23 13:43:23 - NOVO | Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker | Falha ao enviar requisição
+2026-03-23 13:43:24 - NOVO | Level Error - order-processor-mesa-euroinvest | alteracao# idOrderExchange nulo e nao encontrado no cache. idOrderFixServer=VLMB.260323228000030110222 idOrder=172232643
+2026-03-23 13:43:26 - NOVO | Level Error -> backoffice-ws -> Trademap | Uncaught exception
+2026-03-23 13:43:27 - NOVO | Authentication-ws - Trademap-Mobile -> Level Error | Uncaught exception
+2026-03-23 13:43:30 - NOVO | Ors-ws - RocketTrader -> Level Error | Não foi possível executar sua ordem!
+2026-03-23 13:43:30 - NOVO | Ors-ws - RocketTrader -> Level Error | Houve um erro ao mandar a ordem para a fila do OMS!
+2026-03-23 13:43:31 - NOVO | Mspublictitles -> Publictitles - Trademap - LEVEL-ERROR | Operator called default onErrorDropped
+2026-03-23 13:43:31 - NOVO | Ors-ws -> MicroServiços - Trademap - LEVEL-ERROR | [c2a8cc9d-1838591]  500 Server Error for HTTP POST "/v1/ors-gateway/getAllOrdersPaged"
+2026-03-23 13:43:31 - NOVO | Ors-ws -> MicroServiços - Trademap - LEVEL-ERROR | request turned to error
+2026-03-23 13:43:38 - NOVO | Level ERROR -> api-granamap-planning -> M.E | Ocorreu um erro ao atualizar o token da super rico
+2026-03-23 13:43:41 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-1 - (PRO) | order com erro: ORDER-MONITOR
+2026-03-23 13:43:41 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-1 - (PRO) | Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because 
+2026-03-23 13:43:42 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-2 - (PRO) | Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because 
+2026-03-23 13:43:42 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-2 - (PRO) | order com erro: ORDER-MONITOR
+2026-03-23 13:43:42 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-5 - (PRO) | order com erro: ORDER-MONITOR
+2026-03-23 13:43:42 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-5 - (PRO) | Item dedo duro invalido (formato esperado: TIPO.ATIVO ou TIPO.PERIODO.ATIVO): [#e2acf]
+2026-03-23 13:43:42 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-5 - (PRO) | Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because 
+2026-03-23 13:43:43 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-3 - (PRO) | order com erro: ORDER-MONITOR
+2026-03-23 13:43:43 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-3 - (PRO) | Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because 
+2026-03-23 13:43:43 - NOVO | LEVEL ERROR -> Data-Streamer-1 - (VANILLA) | 1f0d3be9-b9f6-40d5-8a03-d2e53e1a539c: Error processing
+2026-03-23 13:43:43 - NOVO | LEVEL ERROR -> Data-Streamer-2 - (VANILLA) | b9d9cafd-5d54-4136-8e50-d3200a55a49f: Error processing
+2026-03-23 13:43:43 - NOVO | LEVEL ERROR -> Data-Streamer-3 - (VANILLA) | Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because 
+2026-03-23 13:43:44 - NOVO | LEVEL ERROR -> Data-Streamer-4 - (VANILLA) | Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because 
+2026-03-23 13:43:44 - NOVO | LEVEL ERROR -> Data-Streamer-4 - (VANILLA) | 191e9f5d-09ee-4548-a0d2-aaea40032bed: Error processing
+2026-03-23 13:43:44 - NOVO | Level ERROR -> crawler-captura-cvm-job -> Marketdata | Cannot invoke "java.math.BigDecimal.multiply(java.math.BigDecimal)" because "result" is null
+2026-03-23 13:43:45 - NOVO | Level Error ->b3-bmf-candle-rocket-data-adapter-application-sp3 -> (Cheetah-Pro) | Fila BMF cheia (3596 itens). Publisher: nome=IOSMA-BMF alive=true state=RUNNABLE.
+2026-03-23 13:43:45 - NOVO | Level Error ->b3-bmf-candle-rocket-data-adapter-application-sp3 -> (Cheetah-Pro) | Fila BMF cheia — descartados 3596 itens. Tentando reinserir.
+2026-03-23 13:43:45 - NOVO | Level Error -> lina-connector | [LINA_CONNECTION_RESOURCE] Error fetching resources for connection c95c9c5b-04d0-4deb-9091-03b948471812
+2026-03-23 13:43:45 - NOVO | Level Error -> lina-connector | Failed to get resources for user: 391580d6-effa-471f-afb0-f35126f624d4
+2026-03-23 13:43:45 - NOVO | Level Error -> lina-connector | Failed to get financing payments for contract: 00278555530081078
+2026-03-23 13:44:48 - NOVO | order-risk-manager-daemon - RocketTrader -> Level Error | Could not subscribe to list [com.valemobi.cheetahapi.api.streaming.models.SubscribeItems@2eabfc91]
+2026-03-23 13:44:48 - NOVO | order-risk-manager-daemon - RocketTrader -> Level Error | Error in streaming, retry... 
+2026-03-23 13:44:48 - NOVO | order-risk-manager-daemon - RocketTrader -> Level Error | error trying to reconnect 
+2026-03-23 13:44:48 - NOVO | order-risk-manager-daemon - RocketTrader -> Level Error | Error no https://cheetah-prod-internal2.rockettrader.com.br/v2/subscribe
+2026-03-23 13:44:58 - NOVO | LEVEL ERROR -> Internal-Application-Rocket-2 - (PRO) | QUOTE-RAW-BVSP: erro ao dar UNSUB
+2026-03-23 13:46:28 - NOVO | LEVEL ERROR > basket-asterisk-application (Vanilla) | Error on streaming
+2026-03-23 13:49:43 - NOVO | LEVEL ERROR > ors-web-socket-application - RocketTrader | Authentication failed for WebSocket session 6a4c15bd: Invalid session data - investor ID missing
+2026-03-23 13:52:47 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][NOT_FOUND_EXCEPTION] Ocorreu um erro tratado na requisição em account-find-by-id: Conta 61315dbe-08f3-4fc4-895b-95e1d4d3a2e5 não encontrada.
+2026-03-23 13:54:34 - NOVO | Carteira-ws -> WS-Portal - Trademap - LEVEL-ERROR | Uncaught exception
+2026-03-23 13:58:05 - NOVO | Trademap-ws (RocketTrader) -> Level Error | Não foi possível obter o sistema operacional.
+2026-03-23 13:59:28 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][BUDGET_CATEGORIES_VALUE_EXCEPTION] Ocorreu um erro tratado na requisição em budget-create: Valores de categorias ultrapassam o limite do orçamento.
+2026-03-23 14:01:06 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][BAD_REQUEST_EXCEPTION] Ocorreu um erro tratado na requisição em : For SEMANAL frequency, dayBegin must be NULL. Provided: 21
+2026-03-23 14:01:22 - NOVO | Level Error -> fixserver-simulator - OMS-Multibroker | Stop disparado para uma ordem que nao foi encontrada no banco de dados: SOURCE_REF: VLMB.260323023000006911287 Event: SimulatorCEPEvent [idStrategy=17688206, idSourceReference=VLMB.2603230230000069112
+2026-03-23 14:03:08 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-6 - (PRO) | Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because 
+2026-03-23 14:03:28 - NOVO | Binance-ws -> Permission - Trademap - LEVEL-ERROR | [binancePermission-ws]  Error on get binancePermission: TokenInfo não encontrado... para o IdInvestor: 1214167 e IdBroker: 111
+2026-03-23 14:03:31 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-1 - (PRO) | Error sending snapshot to a4e35002-73f0-4c83-8a1b-5b7c8e9ec289
+2026-03-23 14:04:35 - NOVO | Carteira-ws -> WS-Mobile - Trademap - LEVEL-ERROR | INSERT INTO
+2026-03-23 14:04:40 - NOVO | Carteira-ws -> WS-Portal - Trademap - LEVEL-ERROR | INSERT INTO
+2026-03-23 14:04:45 - NOVO | Level ERROR -> updater-creation-appstore -> M.E | [INTEGRATE-RECENT-SUBSCRIPTIONS] error processing receipt 2188450
+2026-03-23 14:06:51 - NOVO | Nitro-ws - RocketTrader -> Exception | Cannot further apply discard hook while discarding and clearing a queue
+2026-03-23 14:07:56 - NOVO | Level ERROR -> api-financial-core -> M.E | Tipo: java.lang.NullPointerException
+2026-03-23 14:07:56 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][INTERNAL_SERVER_ERROR] Ocorreu um erro na requisição.
+2026-03-23 14:07:59 - NOVO | Level Error -> robo-zeragem-mesa-euroinvest - OMS-Multibroker | Ocorreu um erro ao tratar ordem
+2026-03-23 14:10:00 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][ZERO_INVOICE_VALUE_EXCEPTION] Ocorreu um erro tratado na requisição em : Não é possível pagar esta fatura pois ela está zerada!
+2026-03-23 14:10:00 - NOVO | Level ERROR -> api-financial-core -> M.E | Batch entry 0 update "account"."tb_balance" set "balance"=('-157.93'::numeric),"date_insert"=('2023-05-11 11:43:46.304014-03'),"date_integrated"=('2023-05-11 -03'),"date_update"=('2026-03-23 14:08:50.
+2026-03-23 14:10:10 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-4 - (PRO) | Item not found for id: IdentityKey{UNKNOWN|CUSTODIA||0|CUSTODY_INTRADAY||ALL|0|0|0|0|ALL_PLAT|HIGHER_VARIATION|BUY|MINUTE|0|false}
+2026-03-23 14:10:10 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-6 - (PRO) | Item not found for id: IdentityKey{UNKNOWN|CUSTODIA||0|CUSTODY_INTRADAY||ALL|0|0|0|0|ALL_PLAT|HIGHER_VARIATION|BUY|MINUTE|0|false}
+2026-03-23 14:10:11 - NOVO | LEVEL ERROR > ors-web-socket-application - RocketTrader | IP 192.168.80.4 has exceeded maximum failed attempts: 5
+2026-03-23 14:10:14 - NOVO | LEVEL ERROR -> Internal-Application-Rocket-1 - (PRO) | Item not found for id: IdentityKey{UNKNOWN|CUSTODIA||0|CUSTODY_INTRADAY||ALL|0|0|0|0|ALL_PLAT|HIGHER_VARIATION|BUY|MINUTE|0|false}
+2026-03-23 14:10:14 - NOVO | LEVEL ERROR -> Internal-Application-Rocket-2 - (PRO) | Item not found for id: IdentityKey{UNKNOWN|CUSTODIA||0|CUSTODY_INTRADAY||ALL|0|0|0|0|ALL_PLAT|HIGHER_VARIATION|BUY|MINUTE|0|false}
+2026-03-23 14:10:47 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-1 - (PRO) | Item not found for id: IdentityKey{UNKNOWN|CUSTODIA||0|CUSTODY_INTRADAY||ALL|0|0|0|0|ALL_PLAT|HIGHER_VARIATION|BUY|MINUTE|0|false}
+2026-03-23 14:10:48 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-2 - (PRO) | Item not found for id: IdentityKey{UNKNOWN|CUSTODIA||0|CUSTODY_INTRADAY||ALL|0|0|0|0|ALL_PLAT|HIGHER_VARIATION|BUY|MINUTE|0|false}
+2026-03-23 14:10:48 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-5 - (PRO) | Item not found for id: IdentityKey{UNKNOWN|CUSTODIA||0|CUSTODY_INTRADAY||ALL|0|0|0|0|ALL_PLAT|HIGHER_VARIATION|BUY|MINUTE|0|false}
+2026-03-23 14:10:48 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-3 - (PRO) | Item not found for id: IdentityKey{UNKNOWN|CUSTODIA||0|CUSTODY_INTRADAY||ALL|0|0|0|0|ALL_PLAT|HIGHER_VARIATION|BUY|MINUTE|0|false}
+2026-03-23 14:15:31 - NOVO | Level ERROR -> api-financial-core -> M.E | Tipo: org.springframework.dao.DataIntegrityViolationException
+2026-03-23 14:15:31 - NOVO | Level ERROR -> api-financial-core -> M.E | Batch entry 0 insert into "invoice"."tb_invoice" ("cut_off_date","date_insert","date_update","due_date","external_invoice_id","id_credit_card","id_user","is_archived","last_invoice_balance","paid_valu
+2026-03-23 14:17:20 - NOVO | LEVEL ERROR > fundamentos-data-adapter-application - Cheetah-Pro | Streaming nulo ou nao conectado
+2026-03-23 14:20:42 - NOVO | Level ERROR -> api-financial-core -> M.E | Erro ao processar mensagem no tópico: delete-single-transaction-topic, key: c2c44d6a-55a2-4880-92c8-5916285182f2-28040dc5-14a4-4888-8276-c3592ee7f9c9
+2026-03-23 14:21:41 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-5 - (PRO) | Item candle invalido: WINFUT:1:DAY:1
+2026-03-23 14:21:42 - NOVO | LEVEL ERROR -> Data-Streamer-1 - (VANILLA) | Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" because 
+2026-03-23 14:23:32 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-4 - (PRO) | Item candle invalido: [#83097]
+2026-03-23 14:25:27 - NOVO | Authentication-ws - Minhas-Economias -> Level Error | Ocorreu um erro inesperado
+2026-03-23 14:25:39 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-2 - (PRO) | Item candle invalido: WINFUT:1:DAY:1
+2026-03-23 14:27:07 - NOVO | Trademap-ws (RocketTrader) -> Level Error | 
+            SELECT unnest(account_list_hire_trademap)
+            FROM tb_investor_multibroker_authentication
+            WHERE id_contract = ?
+            AND id_investor = ?
+            AND id_brok
+2026-03-23 14:32:11 - NOVO | Authentication-ws - Trademap-Mobile -> Level Error | Não foi possível enviar o seed
+2026-03-23 14:33:58 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-1 - (PRO) | Item dedo duro invalido (formato esperado: TIPO.ATIVO ou TIPO.PERIODO.ATIVO): [#b950a]
+2026-03-23 14:35:03 - NOVO | Level ERROR -> api-financial-core -> M.E | Tipo: java.time.DateTimeException
+2026-03-23 14:35:03 - NOVO | Level ERROR -> api-financial-core -> M.E | HOuve um erro: 
+2026-03-23 14:35:11 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-6 - (PRO) | order com erro: ORDER-MONITOR
+2026-03-23 14:38:43 - NOVO | Level Error - order-processor-mesa-euroinvest | Ocorreu um erro ao cancelar a ordem. {}
+2026-03-23 14:38:55 - NOVO | Level ERROR -> api-granamap-invoice -> M.E | Erro ao tentar consumir mensagem: cached plan must not change result type
+2026-03-23 14:40:20 - NOVO | Level Error - order-processor-rico-daemon | Erro ao recuperar portfolio. Considerando zero.
+2026-03-23 14:40:39 - NOVO | LEVEL ERROR -> Data-Streamer-1 - (VANILLA) | An error occurred: 
+2026-03-23 14:41:44 - NOVO | Level ERROR -> api-financial-core -> M.E | An I/O error occurred while sending to the backend.
+2026-03-23 14:41:51 - NOVO | LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro | Erro ao consumir orders do cheetah null
+2026-03-23 14:42:19 - NOVO | Level Error -> lina-connector | Ocorreu um erro no processamento em paralelo de criar consentimento
+2026-03-23 14:42:19 - NOVO | Level Error -> lina-connector | Failed to create consent for stakeholder: 4bc317d7-9731-4ab3-aa4c-a23809320fbe
+2026-03-23 14:44:59 - NOVO | Level ERROR -> api-financial-core -> M.E | Batch entry 0 insert into "transaction"."tb_transaction" ("connection_type","current_transaction","date_insert","date_transaction","date_update","deleted","description","document_number_value","extern
+2026-03-23 14:45:29 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-1 - (PRO) | Item candle invalido: WINFUT:1:DAY:1
+2026-03-23 14:46:34 - NOVO | Level ERROR -> api-financial-core -> M.E | Application exception overridden by rollback exception
+2026-03-23 14:48:15 - NOVO | LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro | Error on streaming
+2026-03-23 14:51:59 - NOVO | BinanceSafeKeeping-ws -> TRADEMAP -> Level-Error | Houve um erro durante a execução da requisição | Mensagem: {"msg":"Invalid API-key, IP, or permissions for action.","code":-2015}
+2026-03-23 14:51:59 - NOVO | BinanceSafeKeeping-ws -> TRADEMAP -> Level-Error | Erro ao carregar custodia do idInvestor: 94246! Excecao: valemobi.web.exceptions.RethrowException
+2026-03-23 14:54:13 - NOVO | Level Error -> b3-bvsp-trade-data-adapter-SP3 -> Cheetah-Pro | erro ao carregar cache de corretoras
+2026-03-23 14:57:08 - NOVO | LEVEL-ERROR -> MSpermission-Portal -> TRADEMAP-PERMISSION | Erro ao aceitar os termos para o idInvestor 3501790
+2026-03-23 14:57:08 - NOVO | LEVEL-ERROR -> MSpermission-Portal -> TRADEMAP-PERMISSION | Incorrect password, try again.
+2026-03-23 14:58:11 - NOVO | Trademap-ws & Trademap-ws-iex -> WS-Portal - Trademap - LEVEL-ERROR | Error - getVlCloseLimitWithSynonymous: valemobi.framework.kangaroo.handler.pouch.PouchAccessDeniedException
+2026-03-23 14:58:37 - NOVO | Trademap-ws (RocketTrader) -> Level Error | Error - getVlCloseLimitWithSynonymous: valemobi.framework.kangaroo.handler.pouch.PouchAccessDeniedException
+2026-03-23 15:03:34 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][PAID_VALUE_HIGHER_THAN_INVOICE_VALUE_EXCEPTION] Ocorreu um erro tratado na requisição em : Não é possível pagar a fatura com um valor maior que a fatura.
+2026-03-23 15:05:17 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][TRANSACTION_AND_CATEOGRY_DIFFERENT_TYPE_EXCEPTION] Ocorreu um erro tratado na requisição em transaction-update: Não é possível atribuir uma categoria com tipo diferente à esta transação.
+2026-03-23 15:05:18 - NOVO | Trademap-ws & Trademap-ws-iex -> WS-Portal - Trademap - LEVEL-ERROR | Uncaught exception
+2026-03-23 15:05:43 - NOVO | Authentication-ws - Minhas-Economias -> Level Error | Error: getRecaptchaInfoMobile - Unsuccessful response code: 503, message: , body: {
+2026-03-23 15:08:13 - NOVO | Level ERROR -> api-granamap-invoice -> M.E | Ocorreu um erro na requisição
+2026-03-23 15:12:02 - NOVO | Level ERROR -> api-granamap-authentication -> M.E | Ocorreu um erro na requisição
+2026-03-23 15:12:03 - NOVO | Level ERROR -> api-granamap-user -> M.E | Ocorreu um erro na requisição
+2026-03-23 15:12:03 - NOVO | Level ERROR -> api-granamap-user -> M.E | [CreateUserImpl] Ocorreu um erro ao criar usuário
+2026-03-23 15:13:35 - NOVO | Trademap-ws (RocketTrader) -> Level Error | 
+            SELECT id_stock_fii_month_domain
+            FROM tb_stock_fii_month_domain
+            WHERE id_stock = ? 
+         AND dt_reference IN () [677777]
+2026-03-23 15:18:52 - NOVO | Level Error -> b3-options-rocket-data-adapter-application -> Cheetah-Pro | error trying to reconnect 
+2026-03-23 15:22:30 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][NOT_FOUND_EXCEPTION] Ocorreu um erro tratado na requisição em delete-credit-card-by-id-update-to-deleted: Cartao de credito não encontrado
+2026-03-23 15:22:38 - NOVO | LEVEL ERROR -> prop-desk-rel-perf-data-adapter -> Cheetah-Pro | erro calculando variação para investor PerformanceIndentifier[period=CUSTODY_INTRADAY, idBroker=228, account=9494] stock WINJ26
+2026-03-23 15:23:09 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-2 - (PRO) | Error sending snapshot to 4f7ab289-47a0-40b4-9e9f-ef764b8bf977
+2026-03-23 15:24:16 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][NOT_FOUND_EXCEPTION] Ocorreu um erro tratado na requisição em ListCompetenceViewUserTransactionsUsecase.execute: Faturas não encontradas ou não pertencem ao usuário: 87ceaf84-8a17-48ae-9d07-8d
+2026-03-23 15:24:16 - NOVO | Level ERROR -> api-financial-core -> M.E | Faturas solicitadas não encontradas. userId: 8babfbab-e364-43d4-83fc-1c615606fd9c, solicitadas: [87ceaf84-8a17-48ae-9d07-8d37027b2daf], não encontradas: [87ceaf84-8a17-48ae-9d07-8d37027b2daf]
+2026-03-23 15:28:01 - NOVO | workspace-ws - RocketTrader -> Level Error | [GlobalExceptionHandler] Ocorreu um erro nas regras do serviço: FlowException(message=Componente não encontrado., code=COMPONENT_NOT_FOUND)
+2026-03-23 15:28:18 - NOVO | Level Error -> lina-connector | Resource processing failed: ProcessLinaFundBalanceResourceService
+2026-03-23 15:28:18 - NOVO | Level Error -> lina-connector | Failed to get funds for user: 3fb6321d-4a13-4c09-bc45-bab2a8aca84a
+2026-03-23 15:31:11 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][SUBCATEGORY_DONT_BELONG_TO_CATEGORY_EXCEPTION] Ocorreu um erro tratado na requisição em transaction-update: Sub-categoria coisas pessoais não pode ser associada à categoria informada
+2026-03-23 15:44:11 - NOVO | Level ERROR -> api-granamap-account -> M.E | Ocorreu um erro na requisição
+2026-03-23 15:44:11 - NOVO | Level ERROR -> api-granamap-account -> M.E | [ERROR]-[500 INTERNAL_SERVER_ERROR "Erro ao buscar saldos do usuario: c5e59722-8d57-4e2e-9708-b8e74752ac39"; nested exception is valemobi.exception.InternalServerErrorException: 500 INTERNAL_SERVER_ER
+2026-03-23 15:45:52 - NOVO | Level ERROR -> api-financial-core -> M.E | ERROR: deadlock detected
+2026-03-23 15:46:07 - NOVO | LEVEL-ERROR -> agora-authenticator -> Trademap | Cliente não encontrado na base do Trademap.
+2026-03-23 15:46:29 - NOVO | Level ERROR -> api-granamap-user -> M.E | [ERROR][getPlannerByEmail] Erro interno ao buscar planejador pelo email.
+2026-03-23 15:46:30 - NOVO | LEVEL-ERROR -> xp-authenticator -> Trademap | Cliente não encontrado na base do Trademap.
+2026-03-23 15:47:41 - NOVO | LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro | Error on streaming
+2026-03-23 15:47:41 - NOVO | LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro | Streaming nulo ou nao conectado
+2026-03-23 15:47:45 - NOVO | LEVEL ERROR -> prop-desk-rel-perf-data-adapter -> Cheetah-Pro | Error on streaming
+2026-03-23 15:47:48 - NOVO | LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro | Erro no monitoramento de mensagens
+2026-03-23 15:47:48 - NOVO | LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro | Erro durante reconexão (tentativa #1): event executor terminated
+2026-03-23 15:47:48 - NOVO | LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro | Error no null/v2/subscribe - HTTP -1: no protocol: null/v2/subscribe
+2026-03-23 15:47:48 - NOVO | LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro | Error on streaming
+2026-03-23 15:47:53 - NOVO | LEVEL ERROR - 'Streaming nulo ou nao conectado' -> Custody-league-command-data-adapter -> Cheetah-Pro … | Error on streaming
+2026-03-23 15:55:23 - NOVO | Operation-connector-consumer -> Carteiras - Trademap - LEVEL-ERROR | Ocorreu um erro desconhecido (message: Não encontramos esse idInstrument (0))
+2026-03-23 15:55:23 - NOVO | Operation-connector-consumer -> Carteiras - Trademap - LEVEL-ERROR | Finalizando o processo com erro. OperationConnectorConsumerDTO(idContract=2020, idPortfolio=19417, cdOrigin=MULTIBROKER_PEND_OPERATION) idPortfolio: idPortfolio=19417
+2026-03-23 15:58:56 - NOVO | LEVEL ERROR > ors-web-socket-application - RocketTrader | Error processing order: Não é possível enviar ordens para uma conta inativa.
+2026-03-23 15:59:07 - NOVO | Trademap-ws (RocketTrader) -> Level Error | 
+           SELECT 
+                tb_trade_brokerage_five_minute.id_point, 
+                tb_trade_brokerage_five_minute.id_brokerage as id_brokerage,
+                nm_brokerage,
+               
+2026-03-23 16:02:17 - NOVO | Level Error - order-processor-daemon-simulator | Erro generico no processamento da mensagem. Colocando na fila de erro...
+2026-03-23 16:04:36 - NOVO | LEVEL ERROR -> Data-Streamer-2 - (VANILLA) | Erro no streaming gprc. Reabrindo conexao
+2026-03-23 16:04:37 - NOVO | LEVEL ERROR -> Data-Streamer-4 - (VANILLA) | Erro no streaming gprc. Reabrindo conexao
+2026-03-23 16:05:53 - NOVO | Level ERROR -> api-granamap-account -> M.E | [ERROR]-[500 INTERNAL_SERVER_ERROR "Erro ao arquivar transactions"; nested exception is valemobi.exception.InternalServerErrorException: 500 INTERNAL_SERVER_ERROR "Ocorreu um erro inesperado com a apl
+2026-03-23 16:10:03 - NOVO | LEVEL ERROR -> Data-Streamer-2 - (VANILLA) | Servlet.service() for servlet [dispatcherServlet] threw exception
+2026-03-23 16:11:29 - NOVO | Stock-Info-ws - RocketTrader -> LEVEL ERROR | [1aeab6ad-11433]  500 Server Error for HTTP GET "/trademap/v2/stock/summary/statistics?cdStock=HBTS3&idExchange=1"
+2026-03-23 16:11:29 - NOVO | Stock-Info-ws - RocketTrader -> LEVEL ERROR | [34f421c7-11469]  500 Server Error for HTTP POST "/trademap/v1/stock/get-hist-corporate-event-full"
+2026-03-23 16:12:51 - NOVO | Level ERROR -> api-financial-core -> M.E | ERROR: nextval: reached maximum value of sequence "tb_transaction_id_transaction_seq" (2147483647)
+2026-03-23 16:12:55 - NOVO | Level ERROR -> api-granamap-transaction -> M.E | ERROR: nextval: reached maximum value of sequence "tb_transaction_id_transaction_seq" (2147483647)
+2026-03-23 16:13:18 - NOVO | Fundamental-ws -> MicroServiços - Trademap - LEVEL-ERROR | [f8f809e3-15] Error [java.lang.UnsupportedOperationException] for HTTP POST "/api/trademap/v1/calendars/proceeds", but ServerHttpResponse already committed (200 OK)
+2026-03-23 16:13:18 - NOVO | Fundamental-ws -> MicroServiços - Trademap - LEVEL-ERROR | Erro inesperado
+2026-03-23 16:16:10 - NOVO | Level ERROR -> api-financial-core -> M.E | Erro ao processar mensagem no tópico: process-projected-transactions-topic, key: 0296b051-8bf3-4c69-b996-8c3897f1b914
+2026-03-23 16:22:06 - NOVO | Level Error ->b3-bmf-candle-rocket-data-adapter-application-sp3 -> (Cheetah-Pro) | no trades for WINJ28 BMF 1
+2026-03-23 16:25:13 - NOVO | Level ERROR -> api-financial-core -> M.E | Backoff FixedBackOff{interval=1000, currentAttempts=4, maxAttempts=3} exhausted for process-projected-transactions-topic-2@8987
+2026-03-23 16:25:13 - NOVO | Level ERROR -> api-financial-core -> M.E | Error generating projected transactions for user: 68c2fb6e-60b2-46e1-b407-29b37b750df5
+2026-03-23 16:27:10 - NOVO | Level ERROR -> api-financial-core -> M.E | Tipo: org.springframework.dao.EmptyResultDataAccessException
+2026-03-23 16:27:10 - NOVO | Level ERROR -> api-financial-core -> M.E | [UPDATE_LIMIT_EXPENSE] Error updating category - uuid: f820d12c-3199-47bc-891d-a3f143042a48
+2026-03-23 16:43:34 - NOVO | Authentication-ws - Minhas-Economias -> Level Error | Não foi possível enviar o seed
+2026-03-23 16:44:53 - NOVO | LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro | Erro no monitoramento de mensagens
+2026-03-23 16:44:53 - NOVO | LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro | Erro durante reconexão (tentativa #1): event executor terminated
+2026-03-23 16:44:53 - NOVO | LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro | Error no null/v2/subscribe - HTTP -1: no protocol: null/v2/subscribe
+2026-03-23 16:44:57 - NOVO | LEVEL ERROR > Custody-command-data-adapter -> Cheetah-Pro | Error on streaming
+2026-03-23 16:45:02 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-4 - (PRO) | Erro no streaming gRPC, tentando reconectar ao 35.247.254.20:50051
+2026-03-23 16:45:02 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-6 - (PRO) | Erro no streaming gRPC, tentando reconectar ao 35.247.254.20:50051
+2026-03-23 16:45:10 - NOVO | Level Error -> fixserver-simulator - OMS-Multibroker | Error on streaming
+2026-03-23 16:45:12 - NOVO | Level Error - order-processor-daemon-nitro-xp | Erro ao recuperar portfolio. Considerando zero.
+2026-03-23 16:45:26 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-1 - (PRO) | Erro no streaming gRPC, tentando reconectar ao 35.247.254.20:50051
+2026-03-23 16:45:26 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-2 - (PRO) | Erro no streaming gRPC, tentando reconectar ao 35.247.254.20:50051
+2026-03-23 16:45:26 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-5 - (PRO) | Erro no streaming gRPC, tentando reconectar ao 35.247.254.20:50051
+2026-03-23 16:45:27 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-3 - (PRO) | Erro no streaming gRPC, tentando reconectar ao 35.247.254.20:50051
+2026-03-23 16:46:42 - NOVO | LEVEL ERROR > ors-web-socket-application - RocketTrader | Error validating order ownership: Esta ordem não pode ser modificada
+2026-03-23 16:46:50 - NOVO | Level Error - order-processor-clear-daemon | Erro ao recuperar portfolio. Considerando zero.
+2026-03-23 16:48:52 - NOVO | LEVEL ERROR > b3-dedo-duro-vanilla-data-adapter-application-SP1 | Argumento invalido ao processar trade volume [INCREMENTAL, 200002283831, 8, BVMF, HeaderMensageVO [mDEntryType=TRADE_VOLUME, rptSeq=29, mDEntryDate=20260323, mDEntryTime=194749326, mDEntryPx=0.00000, 
+2026-03-23 16:48:53 - NOVO | LEVEL ERROR > b3-dedo-duro-vanilla-data-adapter-application-SP3 | Argumento invalido ao processar trade volume [INCREMENTAL, 200002283831, 8, BVMF, HeaderMensageVO [mDEntryType=TRADE_VOLUME, rptSeq=29, mDEntryDate=20260323, mDEntryTime=194749326, mDEntryPx=0.00000, 
+2026-03-23 16:52:09 - NOVO | LEVEL ERROR > ors-web-socket-application - RocketTrader | ❌ CANCEL_ORDER failed in 396μs: Error validating order ownership
+2026-03-23 16:53:58 - NOVO | Level Error -> backoffice-ws -> Trademap | UPDATE tb_investor SET name = ? ,phone_mobile = ? ,cd_investor_status = ?, pw_error_count = 0  ,document_type = ? ,document_number = ?, email = ?, dt_birthday = ? WHERE id_investor = ? AND id_contract
+2026-03-23 16:54:02 - NOVO | Ors-ws - RocketTrader -> Level Error | request turned to error
+2026-03-23 16:54:02 - NOVO | Ors-ws - RocketTrader -> Level Error | [237ed462-29932]  500 Server Error for HTTP GET "/v1/ors-gateway/profiles/account/balance-history/9843?idBroker=228"
+2026-03-23 16:57:01 - NOVO | Level ERROR -> api-financial-core -> M.E | [TASKS-RETRY] Erro não recuperável na subtarefa #2
+2026-03-23 16:57:01 - NOVO | Level ERROR -> api-financial-core -> M.E | [TASKS-LIST] Execução interrompida
+2026-03-23 17:00:14 - NOVO | Level ERROR -> api-financial-core -> M.E | Tipo: org.springframework.dao.DataAccessResourceFailureException
+2026-03-23 17:00:20 - NOVO | Level ERROR -> api-granamap-transaction -> M.E | api-granamap-transaction - Connection is not available, request timed out after 30000ms.
+2026-03-23 17:00:20 - NOVO | Level ERROR -> api-granamap-transaction -> M.E | api-granamap-transaction - Interrupted during connection acquisition
+2026-03-23 17:00:27 - NOVO | Level ERROR -> api-me-educational -> M.E | Ocorreu um erro na requisição
+2026-03-23 17:00:27 - NOVO | Level ERROR -> api-me-educational -> M.E | Error fetching resource benefits from financial-core
+2026-03-23 17:00:46 - NOVO | Level ERROR -> api-granamap-banking-integration -> M.E | Ocorreu um erro na requisição
+2026-03-23 17:00:46 - NOVO | Level ERROR -> api-granamap-invoice -> M.E | Operator called default onErrorDropped
+2026-03-23 17:01:53 - NOVO | LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro | Exceção durante streaming
+2026-03-23 17:01:55 - NOVO | Level ERROR acima de 1 -> CARTEIRAS -> b3-investor-api-consumer | Requisição falhou devido a conexão fechada
+2026-03-23 17:01:57 - NOVO | LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro | Exceção durante streaming
+2026-03-23 17:01:58 - NOVO | LEVEL ERROR > Custody-command-data-adapter -> Cheetah-Pro | Exceção durante streaming
+2026-03-23 17:03:32 - NOVO | Level ERROR -> api-financial-core -> M.E | [BANK_SUGGESTION] Erro ao processar identificação
+2026-03-23 17:07:11 - NOVO | Brokerage-note-reader-ws -> Carteiras - Trademap - LEVEL-ERROR | Nota de corretagem lida com erro (idRequest: idRequest=33ebbc4f-0d0c-458d-892a-5a50151f4613)
+2026-03-23 17:07:11 - NOVO | Brokerage-note-reader-ws -> Carteiras - Trademap - LEVEL-ERROR | Ocorreu um erro ao ler a nota. idRequest: idRequest=33ebbc4f-0d0c-458d-892a-5a50151f4613 | message: For input string: "INFORME DE RENDIMENTOS FINANCEIROS"
+2026-03-23 17:08:25 - NOVO | Level ERROR -> api-financial-core -> M.E | minhasEconomias - Connection is not available, request timed out after 30000ms (total=0, active=0, idle=0, waiting=72)
+2026-03-23 17:08:25 - NOVO | Level ERROR -> api-financial-core -> M.E | FATAL: too many connections for role "valemobi_me"
+2026-03-23 17:08:25 - NOVO | Level ERROR -> api-financial-core -> M.E | Tipo: org.springframework.transaction.CannotCreateTransactionException
+2026-03-23 17:08:25 - NOVO | Level ERROR -> api-financial-core -> M.E | Integration process failed for clientUserId: 8c77c469-abeb-41b7-a350-f38711d9ee9d, requestId: 329afcdb-da89-4069-966a-f45c3a4bf741
+2026-03-23 17:08:25 - NOVO | Level ERROR -> api-financial-core -> M.E | Erro ao processar mensagem no tópico: financial-core-integrate-with-connector-hub, key: 8c77c469-abeb-41b7-a350-f38711d9ee9d
+2026-03-23 17:08:28 - NOVO | Level ERROR -> api-granamap-transaction -> M.E | Failed to submit a listener notification task. Event loop shut down?
+2026-03-23 17:08:49 - NOVO | Level Error - b3-quotes-adapter-application-SP1 - Cheetah-Vanilla | A lista de incrementos em uma mensagem INCR da bolsa retornou nula. Avaliar código. Pode ter ocorrido alguma exceção. Mensagem=MessageWrapper [subscriptionID=20348292648221070, header=MessageHeader [c
+2026-03-23 17:08:49 - NOVO | Level Error - b3-quotes-adapter-application-SP1 - Cheetah-Vanilla | Tipo de mensagem desconhecido:   - [48, 53, 51, 73, 78, 67, 82, 66, 79, 68, 89, 48, 48, 48, 48, 48, 48, 51, 57, 48, 55, 51, 51, 50, 59, 56, 61, 70, 73, 88, 46, 53, 46, 48, 1, 57, 61, 51, 51, 53, 1, 49
+2026-03-23 17:08:49 - NOVO | Level Error - b3-quotes-adapter-application-SP1 - Cheetah-Vanilla | Chegou uma mensagem que não sabemos o que é! Message=null
+2026-03-23 17:08:49 - NOVO | Level Error - b3-quotes-adapter-application-SP1 - Cheetah-Vanilla | Erro ao processar mensagem
+2026-03-23 17:10:08 - NOVO | Level ERROR -> api-granamap-transaction -> M.E | FATAL: terminating connection due to administrator command
+2026-03-23 17:10:08 - NOVO | Level ERROR -> api-granamap-transaction -> M.E | An I/O error occurred while sending to the backend.
+2026-03-23 17:10:08 - NOVO | Level ERROR -> api-granamap-transaction -> M.E | Application exception overridden by rollback exception
+2026-03-23 17:10:28 - NOVO | Level Error - b3-quotes-adapter-application-SP1 - Cheetah-Vanilla | O canal 060 está sem receber uma mesagem há mais de 40000 milisegundos
+2026-03-23 17:19:29 - NOVO | LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro | Exceção durante streaming
+2026-03-23 17:19:38 - NOVO | Level Error -> fixserver-simulator - OMS-Multibroker | Exceção durante streaming
+2026-03-23 17:25:23 - NOVO | Level Error -> fixserver-simulator - OMS-Multibroker | Stop não encontrado. Possivelmente já foi disparado? Order=com.valebroker.ors.server.simulator.Order@6d93b3c1 Order [idOrder=null, idSequence=null, idAccount=74241, idOrderFixServer=VLMB.2603230230000
+2026-03-23 17:33:49 - NOVO | Level Error - b3-quotes-adapter-application-SP1 - Cheetah-Vanilla | Error processing request: null
+2026-03-23 17:35:06 - NOVO | Level ERROR -> api-granamap-transaction -> M.E | TOPIC - Consumer failed. org.springframework.dao.DataAccessResourceFailureException: Unable to acquire JDBC Connection; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to a
+2026-03-23 17:35:32 - NOVO | Level ERROR -> api-me-subscription -> M.E | An exception was thrown preparing the statement SELECT company_id
+2026-03-23 17:35:36 - NOVO | LEVEL ERROR -> Data-Streamer-4 - (VANILLA) | erro ao criar cliente 56cf5c3e-7b2b-4bf7-ab5b-e09bc9c585c7
+2026-03-23 17:43:17 - NOVO | Level ERROR -> api-financial-core -> M.E | Tipo: org.springframework.orm.jpa.JpaSystemException
+2026-03-23 17:43:17 - NOVO | Level ERROR -> api-financial-core -> M.E | FATAL: terminating connection due to administrator command
+2026-03-23 17:47:00 - NOVO | Level ERROR -> api-granamap-account -> M.E | [ERROR]-[500 INTERNAL_SERVER_ERROR "Erro ao buscar saldos do usuario: dc98ceec-3e95-44f2-9aec-7913ec2a87dd"; nested exception is valemobi.exception.InternalServerErrorException: 500 INTERNAL_SERVER_ER
+2026-03-23 17:56:47 - NOVO | LEVEL ERROR -> prop-desk-rel-perf-data-adapter -> Cheetah-Pro | Exceção durante streaming
+2026-03-23 17:56:53 - NOVO | LEVEL ERROR - 'Streaming nulo ou nao conectado' -> Custody-league-command-data-adapter -> Cheetah-Pro … | Exceção durante streaming
+2026-03-23 18:05:22 - NOVO | ERRO ao tratar a inserção de noticia -> Pusher-Job | Ocorreu um erro ao tratar a inserção de noticia: Connection reset
+2026-03-23 18:10:32 - NOVO | Level ERROR -> api-granamap-transaction -> M.E | FATAL: role "api-granamap-transaction" is not permitted to log in
+2026-03-23 18:15:42 - NOVO | LEVEL ERROR - 'Streaming nulo ou nao conectado' -> Custody-league-command-data-adapter -> Cheetah-Pro … | Streaming nulo ou nao conectado
+2026-03-23 18:15:45 - NOVO | Level Error -> robo-zeragem-intraday-league -> OMS-Multibroker | Cheetah: There was no new stream messages in the last 10 SECONDS. Restablishing connection.
+2026-03-23 18:24:16 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-2 - (PRO) | Item dedo duro invalido (formato esperado: TIPO.ATIVO ou TIPO.PERIODO.ATIVO): [#25aeb]
+2026-03-23 18:27:17 - NOVO | Authentication-ws - Minhas-Economias -> Level Error | An exception was thrown preparing the statement SELECT bene.name
+2026-03-23 18:28:54 - NOVO | Authentication-ws - Trademap-Mobile -> Level Error | Erro ao enviar para processar tabela definitiva.
+2026-03-23 18:33:47 - === MONITORAMENTO INICIADO ===
+2026-03-23 18:33:47 - === SERVIDOR WEB INICIADO ===
+2026-03-23 18:35:27 - NOVO | LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro | Erro no monitoramento de mensagens
+2026-03-23 18:35:27 - NOVO | LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro | Erro durante reconexão (tentativa #1): event executor terminated
+2026-03-23 18:45:21 - NOVO | Level Error -> fixserver-simulator - OMS-Multibroker | Erro no monitoramento de mensagens
+2026-03-23 18:45:21 - NOVO | Level Error -> fixserver-simulator - OMS-Multibroker | Erro durante reconexão (tentativa #1): event executor terminated
+2026-03-23 18:47:04 - NOVO | order-risk-manager-daemon - RocketTrader -> Level Error | erro de exception 
+2026-03-23 18:48:09 - NOVO | LEVEL ERROR -> Data-Streamer-Rocket-3 - (PRO) | Item candle invalido: [#f331f]
+2026-03-23 18:49:19 - NOVO | Level ERROR -> api-financial-core -> M.E | [LIMIT_NOTIFICATION] Error building notification payload - userId: d7059d19-2d53-4a36-bae1-0bc8e55d27fc, limitId: 95bfc460-4c93-4b0c-b4d6-f9b8d9c6873e
+2026-03-23 18:52:33 - NOVO | LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro | Falha na requisição de streaming
+2026-03-23 18:52:33 - NOVO | Level ERROR -> api-financial-core -> M.E | ERROR: duplicate key value violates unique constraint "tb_transaction_id_transaction_pk"
+2026-03-23 18:52:35 - NOVO | Level Error -> robo-zeragem-mesa-euroinvest - OMS-Multibroker | Error in streaming, retry... 
+2026-03-23 18:52:35 - NOVO | Level Error -> robo-zeragem-mesa-euroinvest - OMS-Multibroker | Cheetah: Streaming error
+2026-03-23 18:52:40 - NOVO | LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro | Falha na requisição de streaming
+2026-03-23 18:52:45 - NOVO | LEVEL ERROR - 'Streaming nulo ou nao conectado' -> Custody-league-command-data-adapter -> Cheetah-Pro … | Falha na requisição de streaming
+2026-03-23 18:54:09 - NOVO | Level ERROR -> api-financial-core -> M.E | valemobi - JMX name (valemobi) is already registered.
+2026-03-23 18:57:29 - NOVO | LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro | ERROR SUB GRPC
+2026-03-23 18:57:37 - NOVO | Level Error -> robo-zeragem-intraday-league -> OMS-Multibroker | Cheetah: Streaming error
+2026-03-23 18:57:37 - NOVO | Level Error -> robo-zeragem-intraday-league -> OMS-Multibroker | Error in streaming, retry... 
+2026-03-23 18:59:06 - NOVO | Level ERROR -> api-financial-core -> M.E | [ERROR][BAD_REQUEST_EXCEPTION] Ocorreu um erro tratado na requisição em budget-create: Valor de categorias não podem ser menores ou iguais a zero.
+2026-03-23 18:59:19 - NOVO | Nitro-ws - RocketTrader -> LEVEL ERROR | Scheduler worker in group main failed with an uncaught exception
+2026-03-23 19:00:40 - NOVO | Level ERROR -> api-financial-core -> M.E | [INTEGRATE_RESOURCE] Integração de  recurso CREDIT_CARD_BILL terminou com falha para connection 67a7eceb-a80e-44bb-b6c0-90aa64fbfb9c: Unable to rollback against JDBC Connection
+2026-03-23 19:00:41 - NOVO | Level Error -> crm-push-notification-firebase | [PUSH-NOTIFICATION-CONSUME] Firebase method returnMessageBuildMulticast failed data ResponseBodyMessage(idInvestor=3205640, token=fOPqkudqskAViJJdt5QCWo:APA91bHcTflW9o8UX4Id3UGNaVM-6IdqcsOJY_hDnyLfHoy
+2026-03-23 19:00:46 - NOVO | LEVEL ERROR > index-asterisk-application | No price nor variation on message QUOTE|BPAC7|||
+2026-03-23 19:00:46 - NOVO | LEVEL ERROR > index-asterisk-application | Could not close the connection.
+2026-03-23 19:00:47 - NOVO | LEVEL ERROR > basket-asterisk-application (Vanilla) | No price nor variation on message QUOTE|CIEL3:1|||
+2026-03-23 19:00:47 - NOVO | LEVEL ERROR > basket-asterisk-application (Vanilla) | Could not close the connection.
+2026-03-23 19:02:16 - NOVO | Level Error -> crm-push-notification-firebase | [PUSH-NOTIFICATION-CONSUME] Firebase method returnMessageBuildMulticast failed data ResponseBodyMessage(idInvestor=2953850, token=ev-pMpNYThSiHRmhfQ2WVa:APA91bFlB6fMw-nIC01lR7UrBPXyIeLTZpqq0hE2d4NWBio
+2026-03-23 19:02:16 - NOVO | Level Error -> crm-push-notification-firebase | [PUSH-NOTIFICATION-CONSUME] Firebase method returnMessageBuildMulticast failed data ResponseBodyMessage(idInvestor=3073848, token=fM3_cAzGThOY8uS6xflA1t:APA91bH7IO0WdJPpufHp4ETHVUAxObDKBkJnFRR5i8na-Dz

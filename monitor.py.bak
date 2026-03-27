@@ -1,0 +1,1610 @@
+
+
+import json
+import sys
+import hashlib
+import threading
+import time
+import webbrowser
+import re
+import os
+import getpass
+import ssl
+import base64
+from datetime import datetime, timedelta
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+from http.cookiejar import CookieJar
+from urllib.request import Request, HTTPCookieProcessor, HTTPSHandler, build_opener
+from urllib.error import URLError, HTTPError
+from urllib.parse import urlencode, urlparse, parse_qs
+from pathlib import Path
+
+# Caminhos base
+
+SCRIPT_DIR = Path(__file__).parent.resolve()
+CONFIG_PATH = SCRIPT_DIR / "config.json"
+HISTORICO_DIR = SCRIPT_DIR / "historico"
+CACHE_DIR = SCRIPT_DIR / "cache"
+LOG_DIR = SCRIPT_DIR / "logs"
+DASHBOARD_PATH = SCRIPT_DIR / "dashboard.html"
+RELATORIO_PATH = SCRIPT_DIR.parent / "atualizar" / "relatorio.txt"
+
+
+def _confirmados_path():
+    """Caminho do arquivo de erros confirmados do dia atual."""
+    CACHE_DIR.mkdir(exist_ok=True)
+    hoje = datetime.now().strftime("%Y-%m-%d")
+    return CACHE_DIR / f"confirmados_{hoje}.json"
+
+
+def carregar_erros_confirmados():
+    """Carrega hashes de erros confirmados do arquivo do dia."""
+    global erros_confirmados
+    caminho = _confirmados_path()
+    if caminho.exists():
+        try:
+            with open(caminho, "r", encoding="utf-8") as f:
+                dados = json.load(f)
+            with erros_confirmados_lock:
+                erros_confirmados = set(dados if isinstance(dados, list) else [])
+            log(f"Confirmados carregados: {len(erros_confirmados)} hash(es)", "INFO")
+        except Exception as e:
+            log(f"Erro ao carregar confirmados: {e}", "AVISO")
+    else:
+        with erros_confirmados_lock:
+            erros_confirmados = set()
+
+
+def salvar_erros_confirmados():
+    """Persiste hashes de erros confirmados no arquivo do dia."""
+    caminho = _confirmados_path()
+    try:
+        with erros_confirmados_lock:
+            lista = list(erros_confirmados)
+        with open(caminho, "w", encoding="utf-8") as f:
+            json.dump(lista, f)
+    except Exception as e:
+        log(f"Erro ao salvar confirmados: {e}", "AVISO")
+
+# Estado global
+
+estado = {
+    "status": "iniciando",
+    "ultima_verificacao": None,
+    "proxima_verificacao": None,
+    "numero_verificacao": 0,
+    "consultas_status": {},
+    "links_status": {},
+    "erros_novos": [],
+   "erros_hoje_total": 0,
+    "historico_tamanho": 0,
+    "mensagem": "Iniciando monitoramento...",
+    "config_carregada": False,
+    "erro_sistema": None,
+    "kibana_conectado": False,
+}
+
+estado_lock = threading.Lock()
+config_lock = threading.Lock()
+runtime_config = None
+
+# Historico de erros do dia
+historico_dia = {}
+historico_lock = threading.Lock()
+
+# Palavras ja aceitas por link (para deduplicacao fuzzy)
+historico_palavras = {}
+
+# Hashes de erros confirmados no dia
+erros_confirmados = set()
+erros_confirmados_lock = threading.Lock()
+
+# Sessao HTTP com cookies
+_ssl_ctx = ssl.create_default_context()
+_ssl_ctx.check_hostname = False
+_ssl_ctx.verify_mode = ssl.CERT_NONE
+cookie_jar = CookieJar()
+opener = build_opener(
+    HTTPCookieProcessor(cookie_jar),
+    HTTPSHandler(context=_ssl_ctx),
+)
+
+# Cache de conteudo anterior
+cache_anterior = {}
+cache_lock = threading.Lock()
+
+# Funcoes utilitarias
+
+def log(msg, nivel="INFO"):
+    """Imprime log no terminal com timestamp."""
+    timestamp = datetime.now().strftime("%H:%M:%S")
+    cores = {
+        "INFO": "\033[37m",     # branco
+        "OK": "\033[32m",       # verde
+        "AVISO": "\033[33m",    # amarelo
+        "ERRO": "\033[31m",     # vermelho
+        "NOVO": "\033[35m",     # magenta
+    }
+    cor = cores.get(nivel, "\033[37m")
+    reset = "\033[0m"
+    print(f"  {cor}[{timestamp}] [{nivel:5s}] {msg}{reset}")
+
+
+def log_arquivo(msg):
+    """Salva log em arquivo do dia."""
+    LOG_DIR.mkdir(exist_ok=True)
+    hoje = datetime.now().strftime("%Y-%m-%d")
+    log_file = LOG_DIR / f"log_{hoje}.txt"
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open(log_file, "a", encoding="utf-8") as f:
+        f.write(f"{timestamp} - {msg}\n")
+
+
+def adicionar_dias_uteis(data_base, quantidade):
+    """Soma dias uteis, pulando sabado e domingo."""
+    data_atual = data_base
+    dias_adicionados = 0
+
+    while dias_adicionados < quantidade:
+        data_atual += timedelta(days=1)
+        if data_atual.weekday() < 5:
+            dias_adicionados += 1
+
+    return data_atual
+
+
+def atualizar_datas_relatorio(data_base=None):
+    """Atualiza as datas do relatorio textual conforme o dia atual."""
+    if not RELATORIO_PATH.exists():
+        return
+
+    if data_base is None:
+        data_base = datetime.now().date()
+
+    proximo_dia = adicionar_dias_uteis(data_base, 1)
+    dia_seguinte = adicionar_dias_uteis(data_base, 2)
+
+    try:
+        with open(RELATORIO_PATH, "r", encoding="utf-8") as f:
+            conteudo_atual = f.read()
+
+        conteudo_novo = re.sub(
+            r"CHECK-LIST FECHAMENTO DO DIA \d{2}/\d{2}/\d{4}",
+            f"CHECK-LIST FECHAMENTO DO DIA {data_base.strftime('%d/%m/%Y')}",
+            conteudo_atual,
+            count=1,
+        )
+        conteudo_novo = re.sub(
+            r"tb_exchange - dia \d{2}/\d{2}/\d{2}",
+            f"tb_exchange - dia {proximo_dia.strftime('%d/%m/%y')}",
+            conteudo_novo,
+        )
+        conteudo_novo = re.sub(
+            r"tb_exchange - dia Seguinte \d{2}/\d{2}/\d{2}",
+            f"tb_exchange - dia Seguinte {dia_seguinte.strftime('%d/%m/%y')}",
+            conteudo_novo,
+        )
+
+        if conteudo_novo != conteudo_atual:
+            with open(RELATORIO_PATH, "w", encoding="utf-8") as f:
+                f.write(conteudo_novo)
+            log(
+                "Datas do relatorio atualizadas para o novo dia util.",
+                "INFO",
+            )
+    except Exception as e:
+        log(f"Erro ao atualizar relatorio: {e}", "AVISO")
+
+
+def carregar_config():
+    """Carrega e valida o arquivo config.json."""
+    if not CONFIG_PATH.exists():
+        log(f"Arquivo config.json nao encontrado em: {CONFIG_PATH}", "ERRO")
+        return None
+
+    try:
+        with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+            texto = f.read()
+        config = json.loads(texto)
+
+        # Validacoes basicas
+        if not config.get("kibana_url"):
+            log("ERRO: 'kibana_url' nao configurada no config.json", "ERRO")
+            return None
+        if "links" not in config or not isinstance(config.get("links"), list):
+            config["links"] = []
+
+        ativas = sum(1 for c in config.get("links", []) if c.get("ativo", True))
+        log(f"Configuracao carregada: {ativas} link(s) ativo(s)", "OK")
+        return config
+    except Exception as e:
+        log(f"Erro ao ler config.json: {e}", "ERRO")
+        return None
+
+
+def salvar_config(config):
+    """Salva configuracao no config.json."""
+    try:
+        with open(CONFIG_PATH, "w", encoding="utf-8") as f:
+            json.dump(config, f, ensure_ascii=False, indent=4)
+        return True, None
+    except Exception as e:
+        return False, str(e)
+
+
+
+def obter_config_snapshot():
+    """Retorna uma copia da configuracao atual em memoria."""
+    with config_lock:
+        if runtime_config is None:
+            return None
+        return json.loads(json.dumps(runtime_config))
+
+
+def atualizar_config_runtime(nova_config):
+    """Atualiza configuracao em memoria e persiste em arquivo."""
+    global runtime_config
+    ok, erro = salvar_config(nova_config)
+    if not ok:
+        return False, erro
+    with config_lock:
+        runtime_config = nova_config
+    return True, None
+
+
+# Historico de erros
+
+def caminho_historico():
+    """Retorna o caminho do historico do dia atual."""
+    HISTORICO_DIR.mkdir(exist_ok=True)
+    hoje = datetime.now().strftime("%Y-%m-%d")
+    return HISTORICO_DIR / f"erros_{hoje}.json"
+
+
+def carregar_historico():
+    """Carrega historico de erros do dia. Se novo dia, retorna vazio."""
+    global historico_dia, historico_palavras
+    caminho = caminho_historico()
+
+    if caminho.exists():
+        try:
+            with open(caminho, "r", encoding="utf-8") as f:
+                conteudo = f.read().strip()
+            if conteudo:
+                historico_dia = json.loads(conteudo)
+            else:
+                historico_dia = {}
+        except Exception as e:
+            log(f"Erro ao carregar historico, criando novo: {e}", "AVISO")
+            historico_dia = {}
+    else:
+        log("Novo dia detectado! Historico resetado.", "INFO")
+        historico_dia = {}
+
+    # Reconstroi o indice de palavras para deduplicacao
+    rebuilt = {}
+    for entry in historico_dia.values():
+        lnk = entry.get("link", "")
+        palavras = extrair_palavras(entry.get("mensagem", ""))
+        if palavras:
+            if lnk not in rebuilt:
+                rebuilt[lnk] = []
+            rebuilt[lnk].append(palavras)
+    historico_palavras = rebuilt
+    log(f"Historico carregado: {len(historico_dia)} erro(s), {sum(len(v) for v in rebuilt.values())} conjunto(s) de palavras indexados.", "INFO")
+
+    return historico_dia
+
+
+def salvar_historico():
+    """Salva historico de erros do dia em JSON."""
+    caminho = caminho_historico()
+    try:
+        with open(caminho, "w", encoding="utf-8") as f:
+            json.dump(historico_dia, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        log(f"Erro ao salvar historico: {e}", "ERRO")
+
+
+def limpar_historicos_antigos():
+    """Remove historicos e logs com mais de 7 dias."""
+    limite = datetime.now() - timedelta(days=7)
+
+    for pasta in [HISTORICO_DIR, LOG_DIR, CACHE_DIR]:
+        if not pasta.exists():
+            continue
+        for arquivo in pasta.iterdir():
+            if arquivo.is_file():
+                try:
+                    mod_time = datetime.fromtimestamp(arquivo.stat().st_mtime)
+                    if mod_time < limite:
+                        arquivo.unlink()
+                        log(f"Arquivo antigo removido: {arquivo.name}", "INFO")
+                except Exception:
+                    pass
+
+
+# Cache de conteudo
+
+def carregar_cache():
+    """Carrega cache de conteudo anterior dos links."""
+    global cache_anterior
+    CACHE_DIR.mkdir(exist_ok=True)
+    cache_file = CACHE_DIR / "cache_links.json"
+
+    if cache_file.exists():
+        try:
+            with open(cache_file, "r", encoding="utf-8") as f:
+                cache_anterior = json.load(f)
+        except Exception:
+            cache_anterior = {}
+    else:
+        cache_anterior = {}
+
+
+def salvar_cache():
+    """Salva cache de conteudo dos links."""
+    CACHE_DIR.mkdir(exist_ok=True)
+    cache_file = CACHE_DIR / "cache_links.json"
+    try:
+        with open(cache_file, "w", encoding="utf-8") as f:
+            json.dump(cache_anterior, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        log(f"Erro ao salvar cache: {e}", "ERRO")
+
+
+# Hash para deduplicacao
+
+def gerar_hash(texto):
+    """Gera hash MD5 de um texto."""
+    return hashlib.md5(texto.encode("utf-8")).hexdigest()
+
+
+def limpar_conteudo_para_comparacao(html):
+    """
+    Limpa o HTML removendo partes dinamicas antes de comparar.
+    Remove timestamps, IDs de sessao, etc.
+    """
+    texto = html
+    texto = re.sub(r'\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}[\.\d]*[Z]?', '[TS]', texto)
+    texto = re.sub(r'[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}', '[UUID]', texto)
+    texto = re.sub(r'\b\d{13,}\b', '[ID]', texto)
+    texto = re.sub(r'\s+', ' ', texto)
+    return texto.strip()
+
+
+# Deduplicacao fuzzy de mensagens
+
+def extrair_palavras(texto):
+    """Extrai palavras significativas (4+ letras) removendo conteudo variavel."""
+    t = str(texto)
+    t = re.sub(r'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}', ' ', t, flags=re.IGNORECASE)
+    t = re.sub(r'\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}(\.\d+)?', ' ', t)
+    t = re.sub(r'Failing row contains \([^)]*\)', ' ', t)
+    t = re.sub(r'FixedBackOff\{[^}]*\}', ' ', t)
+    t = re.sub(r'([?&][^=&\s]+)=([^&\s]+)', ' ', t)
+    t = re.sub(r'\b\d+\b', ' ', t)
+    palavras = re.findall(r'[^\W\d_]{4,}', t, re.UNICODE)
+    return set(w.lower() for w in palavras)
+
+
+def _e_similar(set_a, set_b):
+    """True se dois conjuntos de palavras sao similares (>=70% containment, min 2 em comum)."""
+    if not set_a or not set_b:
+        return False
+    intersecao = len(set_a & set_b)
+    if intersecao < 2:
+        return False
+    return (intersecao / min(len(set_a), len(set_b))) >= 0.70
+
+
+def _chave_exata(texto):
+    """Chave normalizada para exact-match (sem UUIDs, numeros e espacos extras)."""
+    t = str(texto)
+    t = re.sub(r'[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}', '', t, flags=re.IGNORECASE)
+    t = re.sub(r'\b\d+\b', '', t)
+    t = re.sub(r'\s+', ' ', t)
+    return t.strip().lower()
+
+
+def deduplicar_mensagens(mensagens):
+    """Remove mensagens duplicadas/similares, retornando apenas unicas.
+    Usa fuzzy match por palavras significativas."""
+    aceitos_words = []
+    aceitos_exato = set()
+    unicas = []
+    for msg in mensagens:
+        palavras = extrair_palavras(msg)
+        chave = _chave_exata(msg)
+        if len(palavras) < 2:
+            if chave in aceitos_exato:
+                continue
+            aceitos_exato.add(chave)
+            unicas.append(msg)
+            continue
+        duplicado = chave in aceitos_exato
+        if not duplicado:
+            for aceito in aceitos_words:
+                if _e_similar(palavras, aceito):
+                    duplicado = True
+                    aceitos_exato.add(chave)
+                    break
+        if not duplicado:
+            aceitos_words.append(palavras)
+            aceitos_exato.add(chave)
+            unicas.append(msg)
+    return unicas
+
+
+def resumir_mensagem(msg, max_chars=400):
+    """Trunca na primeira quebra de linha e limita a max_chars (igual ao filtro.html)."""
+    resumo = str(msg)
+    primeira_linha = resumo.find('\n')
+    if primeira_linha > 0:
+        resumo = resumo[:primeira_linha].strip()
+    if len(resumo) > max_chars:
+        resumo = resumo[:max_chars].rstrip() + '\u2026'
+    return resumo
+
+
+def extrair_informacoes_kibana(html):
+    """
+    Extrai informacoes relevantes do HTML do Kibana.
+    Retorna dict com: numero_hits, mensagens, etc.
+    """
+    info = {
+        "numero_hits": 0,
+        "mensagens": [],
+        "timestamp":datetime.now().strftime("%H:%M:%S"),
+    }
+
+    # Tenta achar numero de hits no HTML
+    match_hits = re.search(r'(\d[\d,]*)\s*(?:hit|document|result)', html, re.IGNORECASE)
+    if match_hits:
+        numero_str = match_hits.group(1).replace(',', '')
+        try:
+            info["numero_hits"] = int(numero_str)
+        except ValueError:
+            pass
+
+    # Tenta extrair mensagens de erro
+    mensagens_encontradas = re.findall(r'"(?:message|rawMessage|error|msg|text)":\s*"([^"]{20,500})"', html)
+    if mensagens_encontradas:
+        info["mensagens"] = list(set(mensagens_encontradas[:10]))
+
+    return info
+
+
+def parsear_url_kibana(url):
+    """
+    Parseia URL do Kibana Discover e extrai index pattern ID, query KQL e time range.
+    Retorna dict com 'index_id', 'kql', 'time_from', 'time_to' ou None se nao for Discover.
+    """
+    from urllib.parse import unquote
+    if '#' not in url:
+        return None
+    # Decodifica o fragmento da URL
+    fragmento = unquote(url.split('#', 1)[1])
+
+    # Time range
+    time_from = "now-1h"
+    time_to = "now"
+    m = re.search(r'time:\(from:([^,)]+),to:([^)]+)\)', fragmento)
+    if m:
+        time_from = m.group(1).strip("'")
+        time_to = m.group(2).strip("'")
+
+    # Index pattern ID
+    index_id = None
+    m = re.search(r"index:'?([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})'?", fragmento)
+    if m:
+        index_id = m.group(1)
+
+    # Query KQL/Lucene
+    kql = None
+    linguagem = None
+    m = re.search(r"query:\(language:(kuery|lucene),query:'((?:[^'\\]|\\.)*)'\)", fragmento)
+    if m:
+        linguagem = m.group(1)
+        kql = m.group(2)
+
+    if not index_id and not kql:
+        return None
+
+    # Extrai filtros da URL
+    filtros_must, filtros_must_not = extrair_filtros_kibana(fragmento)
+
+    qdesc = kql if kql else ('(apenas filtros)' if filtros_must else '*')
+    log(f"    URL parseada — index_id={index_id}, lang={linguagem}, kql='{qdesc[:80]}', chips={len(filtros_must)} must / {len(filtros_must_not)} must_not", "INFO")
+    return {
+        "index_id": index_id,
+        "kql": kql or "*",
+        "linguagem": linguagem or "kuery",
+        "time_from": time_from,
+        "time_to": time_to,
+        "filtros_must": filtros_must,
+        "filtros_must_not": filtros_must_not,
+    }
+
+
+def extrair_filtros_kibana(fragmento):
+    """
+    Extrai os filter chips do formato RISON do Kibana (_a parameter).
+    Cada chip tem a forma: query:(match_phrase:(campo:'valor'))
+    com um flag negate:!t ou negate:!f nos ~400 chars anteriores.
+    Retorna (must_clauses, must_not_clauses) prontos para o ES bool query.
+    """
+    must = []
+    must_not = []
+    seen = set()
+
+    # Procura chips do tipo match_phrase
+    for m in re.finditer(
+        r"query:\(match_phrase:\((\w+):(?:'([^']*)'|([^,)\s]+))\)\)",
+        fragmento
+    ):
+        campo = m.group(1)
+        valor = (m.group(2) if m.group(2) is not None else (m.group(3) or '')).strip()
+        if not campo or not valor:
+            continue
+
+        chave = f"{campo}:{valor}"
+        if chave in seen:
+            continue
+        seen.add(chave)
+
+        # Define se vai para must ou must_not
+        inicio = max(0, m.start() - 400)
+        contexto = fragmento[inicio:m.start()]
+        negate_list = list(re.finditer(r'negate:!([ft])', contexto))
+        negado = negate_list[-1].group(1) == 't' if negate_list else False
+
+        clause = {"match_phrase": {campo: valor}}
+        if negado:
+            must_not.append(clause)
+        else:
+            must.append(clause)
+
+    return must, must_not
+
+
+def resolver_index_titulo(kibana_base, index_id, config):
+    """Resolve o titulo do index pattern via API do Kibana. Retorna titulo ou 'logstash-*'."""
+    if not index_id:
+        return "logstash-*"
+    try:
+        url = f"{kibana_base}/api/saved_objects/index-pattern/{index_id}"
+        headers = {"kbn-xsrf": "true"}
+        usuario = config.get("usuario", "")
+        senha = config.get("senha", "")
+        if usuario and senha:
+            credenciais = base64.b64encode(f"{usuario}:{senha}".encode()).decode()
+            headers["Authorization"] = f"Basic {credenciais}"
+        resposta = fazer_requisicao_http(url, headers=headers)
+        dados = json.loads(resposta)
+        return dados.get("attributes", {}).get("title", "logstash-*")
+    except Exception:
+        return "logstash-*"
+
+
+def _auth_headers(config, extra=None):
+    """Monta headers com autenticacao basica + extras."""
+    from urllib.parse import quote as urlquote
+    headers = {"Content-Type": "application/json", "kbn-xsrf": "true"}
+    if extra:
+        headers.update(extra)
+    usuario = config.get("usuario", "")
+    senha = config.get("senha", "")
+    if usuario and senha:
+        credenciais = base64.b64encode(f"{usuario}:{senha}".encode()).decode()
+        headers["Authorization"] = f"Basic {credenciais}"
+    return headers
+
+
+def buscar_hits_elasticsearch(kibana_base, index_titulo, kql, time_from, time_to, config,
+                              filtros_must=None, filtros_must_not=None):
+    """
+    Faz busca no Elasticsearch via proxy do Kibana.
+    Tenta multiplos endpoints de acordo com a versao do Kibana.
+    Retorna (hits, total, erro).
+    """
+    from urllib.parse import quote as urlquote
+
+    # Monta clausulas da busca
+    must_clauses = []
+    if kql and kql != '*':
+        # Ajusta operadores booleanos para o ES
+        kql_es = re.sub(r'\b(and|or|not)\b', lambda m: m.group(1).upper(), kql)
+        must_clauses.append({
+            "query_string": {
+                "query": kql_es,
+                "default_field": "message",
+                "default_operator": "AND",
+                "lenient": True,
+            }
+        })
+    must_clauses.append({"range": {"@timestamp": {"gte": time_from, "lte": time_to}}})
+    must_clauses.extend(filtros_must or [])
+
+    body = {
+        "query": {
+            "bool": {
+                "must": must_clauses,
+                "must_not": filtros_must_not or [],
+            }
+        },
+        "size": 100,
+        "_source": ["message", "rawMessage", "@timestamp", "level", "application_name", "stack_trace"],
+        "sort": [{"@timestamp": {"order": "desc"}}]
+    }
+    body_json = json.dumps(body)
+    headers = _auth_headers(config)
+
+    # Endpoints candidatos
+    es_path = f"{index_titulo}/_search"
+    candidatos = [
+        (f"{kibana_base}/elasticsearch/{index_titulo}/_search", "POST", body_json, headers),
+        (f"{kibana_base}/api/console/proxy?path={urlquote(es_path, safe='')}&method=POST", "POST", body_json, headers),
+        (f"{kibana_base}/internal/search/es", "POST",
+         json.dumps({"params": {"index": index_titulo, "body": body}}), headers),
+    ]
+
+    ultimo_erro = None
+    for url, method, payload, hdrs in candidatos:
+        try:
+            resposta = fazer_requisicao_http(url, method=method, data=payload, headers=hdrs)
+            dados = json.loads(resposta)
+            hits_root = dados.get("rawResponse", dados)
+            hits = hits_root.get("hits", {}).get("hits", [])
+            total_raw = hits_root.get("hits", {}).get("total", 0)
+            if isinstance(total_raw, int):
+                total = total_raw
+            else:
+                total_val = total_raw.get("value", 0)
+                relacao = total_raw.get("relation", "eq")
+                total = len(hits) if relacao == "gte" else total_val
+            log(f"    ES endpoint OK: {url.split(kibana_base)[1][:60]} ({total} hits)", "INFO")
+            return hits, total, None
+        except Exception as e:
+            ultimo_erro = str(e)
+            if "401" in ultimo_erro or "403" in ultimo_erro:
+                break
+            log(f"    Tentativa falhou ({url.split(kibana_base)[1][:40]}): {ultimo_erro[:60]}", "AVISO")
+
+    return [], 0, ultimo_erro
+
+
+# Conexao HTTP e login
+
+def fazer_requisicao_http(url, method="GET", data=None, headers=None):
+    """
+    Faz requisicao HTTP usando urllib com suporte a cookies e SSL.
+    """
+    if headers is None:
+        headers = {}
+
+    # Headers padrao
+    default_headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Connection": "keep-alive",
+    }
+    default_headers.update(headers)
+
+    # Prepara body
+    if data and isinstance(data, dict):
+        data = urlencode(data).encode('utf-8')
+    elif data and isinstance(data, str):
+        data = data.encode('utf-8')
+
+    req = Request(url, data=data, headers=default_headers, method=method)
+
+    try:
+        response = opener.open(req, timeout=45)
+        
+        # Detecta encoding
+        content_type = response.headers.get('Content-Type', '')
+        encoding = 'utf-8'
+        if 'charset=' in content_type:
+            encoding = content_type.split('charset=')[-1].split(';')[0].strip()
+        
+        corpo = response.read()
+        
+        # Descompacta gzip
+        if response.headers.get('Content-Encoding') == 'gzip':
+            import gzip
+            corpo = gzip.decompress(corpo)
+        
+        return corpo.decode(encoding, errors='replace')
+    
+    except HTTPError as e:
+        raise Exception(f"HTTP {e.code}: {e.reason}")
+    except URLError as e:
+        raise Exception(f"Erro de conexao: {e.reason}")
+
+
+def fazer_login_kibana(config):
+    """
+    Tenta fazer login no Kibana usando autenticacao basica.
+    Retorna True se conseguiu, False caso contrario.
+    """
+    kibana_url = config["kibana_url"].rstrip("/")
+    usuario = config.get("usuario", "")
+    senha = config.get("senha", "")
+
+    if not usuario or not senha:
+        log("Usuario/senha nao configurados. Tentando acesso sem autenticacao...", "AVISO")
+        return True
+
+    try:
+        # Header de autenticacao basica
+        credenciais = base64.b64encode(f"{usuario}:{senha}".encode()).decode()
+        headers = {
+            "Authorization": f"Basic {credenciais}"
+        }
+
+        html = fazer_requisicao_http(f"{kibana_url}/app/home", headers=headers)
+
+        # Verifica se parece login valido
+        if "kibana" in html.lower() or "elastic" in html.lower():
+            log("Login no Kibana realizado com sucesso!", "OK")
+            
+            opener.addheaders = [('Authorization', f'Basic {credenciais}')]
+            
+            return True
+        else:
+            log("Resposta inesperada do Kibana ao fazer login", "AVISO")
+            return False
+
+    except Exception as e:
+        log(f"Erro ao fazer login no Kibana: {e}", "ERRO")
+        return False
+
+
+def acessar_link_kibana(link_config, config):
+    """
+    Acessa dados do Kibana via API do Elasticsearch (se URL for do Discover)
+    ou via scraping HTML como fallback.
+    Retorna (dados_dict, erro_str).
+    """
+    url = link_config["url"]
+    kibana_base = config["kibana_url"].split("/app/")[0]
+
+    # Tenta API do Elasticsearch
+    params = parsear_url_kibana(url)
+    if params:
+        index_titulo = resolver_index_titulo(kibana_base, params["index_id"], config)
+        log(f"    API ES: index='{index_titulo}', lang={params.get('linguagem','?')}, kql='{params['kql'][:60]}', chips={len(params.get('filtros_must', []))}", "INFO")
+        hits, total, erro = buscar_hits_elasticsearch(
+            kibana_base, index_titulo, params["kql"],
+            params["time_from"], params["time_to"], config,
+            filtros_must=params.get("filtros_must", []),
+            filtros_must_not=params.get("filtros_must_not", []),
+        )
+        if erro:
+            erro_msg = erro
+            if "401" in erro_msg or "Unauthorized" in erro_msg:
+                return None, "Autenticacao necessaria (verifique usuario/senha)"
+            elif "403" in erro_msg or "Forbidden" in erro_msg:
+                return None, "Sem permissao para acessar"
+            elif "timeout" in erro_msg.lower() or "timed out" in erro_msg.lower():
+                return None, "Timeout - Kibana demorou demais para responder"
+            elif "connection" in erro_msg.lower():
+                return None, "Erro de conexao (Kibana inacessivel)"
+            return None, f"Erro na API ES: {erro_msg[:100]}"
+
+        # Extrai mensagens dos hits
+        mensagens = []
+        for hit in hits:
+            src = hit.get("_source", {})
+            msg = src.get("message") or src.get("rawMessage") or ""
+            if msg and len(msg) >= 10:
+                mensagens.append(msg)
+
+        return {
+            "tipo": "api",
+            "hits": hits,
+            "numero_hits": total,
+            "mensagens": deduplicar_mensagens(mensagens),
+            "timestamp": datetime.now().strftime("%H:%M:%S"),
+        }, None
+
+    # Fallback para HTML
+    try:
+        headers = {}
+        usuario = config.get("usuario", "")
+        senha = config.get("senha", "")
+        if usuario and senha:
+            credenciais = base64.b64encode(f"{usuario}:{senha}".encode()).decode()
+            headers["Authorization"] = f"Basic {credenciais}"
+        html = fazer_requisicao_http(url, headers=headers)
+        info_html = extrair_informacoes_kibana(html)
+        return {"tipo": "html", "conteudo": html, **info_html}, None
+
+    except Exception as e:
+        erro_msg = str(e)
+        if "401" in erro_msg or "Unauthorized" in erro_msg:
+            return None, "Autenticacao necessaria (verifique usuario/senha)"
+        elif "403" in erro_msg or "Forbidden" in erro_msg:
+            return None, "Sem permissao para acessar"
+        elif "404" in erro_msg:
+            return None, "Link nao encontrado (404)"
+        elif "timeout" in erro_msg.lower() or "timed out" in erro_msg.lower():
+            return None, "Timeout - Kibana demorou demais para responder"
+        elif "connection" in erro_msg.lower():
+            return None, "Erro de conexao (Kibana inacessivel)"
+        else:
+            return None, f"Erro: {erro_msg[:100]}"
+
+
+# Deteccao de mudancas
+
+def detectar_mudancas_link(link_config, dados, config):
+    """
+    Compara os dados atuais com o cache anterior.
+    Aceita dict retornado por acessar_link_kibana.
+    Retorna (lista de erros novos, info dict).
+    """
+    global cache_anterior
+    nome = link_config["nome"]
+    metodo = config.get("metodo_deteccao", "conteudo")
+
+    # Normaliza dados
+    if isinstance(dados, dict) and dados.get("tipo") == "api":
+        info = {
+            "numero_hits": dados["numero_hits"],
+            "mensagens": dados["mensagens"],
+            "timestamp": dados["timestamp"],
+            "ids_hits": [h.get("_id", "") for h in dados.get("hits", [])],
+        }
+    else:
+        # Modo HTML
+        html = dados.get("conteudo", "") if isinstance(dados, dict) else (dados or "")
+        info_html = extrair_informacoes_kibana(html)
+        info = {**info_html, "ids_hits": []}
+
+    erros_novos = []
+
+    with cache_lock:
+        cache_prev = cache_anterior.get(nome, {})
+        ja_tinha_cache = bool(cache_prev)
+
+        if metodo == "contador":
+            hits_atual = info["numero_hits"]
+            hits_anterior = cache_prev.get("numero_hits", -1)
+            if hits_anterior >= 0 and hits_atual > hits_anterior:
+                diferenca = hits_atual - hits_anterior
+                erros_novos.append({
+                    "consulta": nome,
+                    "link": nome,
+                    "descricao": link_config.get("descricao", ""),
+                    "mensagem": f"{diferenca} novo(s) erro(s) detectado(s). Total: {hits_atual}",
+                    "timestamp_erro": info["timestamp"],
+                    "hora_detectado": datetime.now().strftime("%H:%M:%S"),
+                    "link_kibana": link_config["url"],
+                    "indice": "elasticsearch",
+                    "tipo": "contador",
+                })
+
+        else:
+            # Compara mensagens e IDs
+            msgs_atuais = set(info["mensagens"])
+            msgs_anteriores = set(cache_prev.get("mensagens", []))
+            ids_atuais = set(info.get("ids_hits", []))
+            ids_anteriores = set(cache_prev.get("ids_hits", []))
+
+            ids_novos = ids_atuais - ids_anteriores
+
+            if ja_tinha_cache:
+                # Usa IDs quando disponivel, senao mensagens
+                if ids_atuais and ids_anteriores:
+                    msgs_novas = [
+                        dados["hits"][i].get("_source", {}).get("message")
+                        or dados["hits"][i].get("_source", {}).get("rawMessage", "")
+                        for i, h in enumerate(dados.get("hits", []))
+                        if h.get("_id", "") in ids_novos
+                    ] if isinstance(dados, dict) and dados.get("tipo") == "api" else []
+                else:
+                    msgs_novas = list(msgs_atuais - msgs_anteriores)
+
+                msgs_novas_unicas = deduplicar_mensagens([m for m in msgs_novas if m and len(m) >= 10])
+                for msg in msgs_novas_unicas:
+                    erros_novos.append({
+                        "consulta": nome,
+                        "link": nome,
+                        "descricao": link_config.get("descricao", ""),
+                        "mensagem": resumir_mensagem(msg),
+                        "timestamp_erro": info["timestamp"],
+                        "hora_detectado": datetime.now().strftime("%H:%M:%S"),
+                        "link_kibana": link_config["url"],
+                        "indice": "elasticsearch",
+                        "tipo": "mensagem",
+                    })
+
+                # Se nao tem IDs, compara hash do HTML
+                if not ids_atuais and not ids_anteriores:
+                    html = dados.get("conteudo", "") if isinstance(dados, dict) else ""
+                    hash_atual = gerar_hash(limpar_conteudo_para_comparacao(html))
+                    hash_anterior = cache_prev.get("hash_conteudo", "")
+                    if hash_atual != hash_anterior and hash_anterior and not erros_novos:
+                        erros_novos.append({
+                            "consulta": nome,
+                            "link": nome,
+                            "descricao": link_config.get("descricao", ""),
+                            "mensagem": f"Conteudo mudou. Hits: {info['numero_hits']}",
+                            "timestamp_erro": info["timestamp"],
+                            "hora_detectado": datetime.now().strftime("%H:%M:%S"),
+                            "link_kibana": link_config["url"],
+                            "indice": "web-scraping",
+                            "tipo": "mudanca_conteudo",
+                        })
+            else:
+                if msgs_atuais:
+                    log(f"    Cache inicial: {len(msgs_atuais)} mensagem(ns) salvas. Alertas apenas para novas.", "INFO")
+
+        # Atualiza cache
+        html_para_hash = dados.get("conteudo", "") if isinstance(dados, dict) and dados.get("tipo") == "html" else ""
+        cache_anterior[nome] = {
+            "hash_conteudo": gerar_hash(limpar_conteudo_para_comparacao(html_para_hash)),
+            "numero_hits": info["numero_hits"],
+            "mensagens": list(info["mensagens"]),
+            "ids_hits": list(info.get("ids_hits", [])),
+            "ultima_atualizacao": datetime.now().isoformat(),
+        }
+
+    return erros_novos, info
+
+
+# Adicionar ao historico
+
+def adicionar_ao_historico(erro):
+    """Adiciona erro ao historico do dia se for realmente novo.
+    Usa hash e comparacao fuzzy por palavras."""
+    global historico_dia, historico_palavras
+
+    chave = gerar_hash(f"{erro['link']}|{erro['mensagem']}")
+    palavras_nova = extrair_palavras(erro['mensagem'])
+    link = erro['link']
+
+    with historico_lock:
+        if chave in historico_dia:
+            return False
+
+        lista_palavras_link = historico_palavras.get(link, [])
+        for palavras_aceitas in lista_palavras_link:
+            if _e_similar(palavras_nova, palavras_aceitas):
+                return False
+
+        # Se chegou aqui, e novo
+        historico_dia[chave] = {
+            "consulta": erro.get("link", ""),  # Para compatibilidade
+            "link": erro["link"],
+            "mensagem": erro["mensagem"],
+            "hora_detectado": erro["hora_detectado"],
+            "timestamp_erro": erro.get("timestamp_erro", ""),
+            "link_kibana": erro.get("link_kibana", ""),
+        }
+        if palavras_nova:
+            if link not in historico_palavras:
+                historico_palavras[link] = []
+            historico_palavras[link].append(palavras_nova)
+        return True
+
+
+def _remover_do_historico(hashes):
+    """Remove hashes do historico_dia e reconstroi historico_palavras.
+    Permite re-deteccao dos mesmos erros apos ACK."""
+    global historico_dia, historico_palavras
+    hashes_set = set(hashes)
+    with historico_lock:
+        for h in hashes_set:
+            historico_dia.pop(h, None)
+        # Reconstroi indice de palavras sem as entradas removidas
+        rebuilt = {}
+        for entry in historico_dia.values():
+            link = entry.get("link", "")
+            palavras = extrair_palavras(entry.get("mensagem", ""))
+            if palavras:
+                if link not in rebuilt:
+                    rebuilt[link] = []
+                rebuilt[link].append(palavras)
+        historico_palavras = rebuilt
+
+
+def _recalcular_status_links_confirmados():
+    """Atualiza consultas_status para 'ok' nos links sem erros pendentes.
+    Chamada imediatamente apos o usuario confirmar erros, sem esperar o proximo ciclo."""
+    with erros_confirmados_lock:
+        confirmados_snap = set(erros_confirmados)
+    with estado_lock:
+        links_com_pendentes = {
+            e.get("link", "") for e in estado.get("erros_novos", [])
+            if e.get("hash", "") not in confirmados_snap
+        }
+        for lnk, cs in estado["consultas_status"].items():
+            if cs.get("status") == "alerta" and lnk not in links_com_pendentes:
+                cs["status"] = "ok"
+
+
+# Loop de monitoramento
+
+def loop_monitoramento():
+    """Thread principal de monitoramento."""
+    global estado, historico_dia
+
+    dia_atual = datetime.now().strftime("%Y-%m-%d")
+
+    # Carrega dados iniciais
+    carregar_historico()
+    carregar_cache()
+    carregar_erros_confirmados()
+
+    # Tenta login no Kibana
+    config_inicial = obter_config_snapshot()
+    if not config_inicial:
+        log("Configuracao indisponivel na memoria", "ERRO")
+        with estado_lock:
+            estado["status"] = "erro"
+            estado["mensagem"] = "Configuracao invalida"
+        return
+
+    log("Conectando ao Kibana...", "INFO")
+    conectou = fazer_login_kibana(config_inicial)
+
+    with estado_lock:
+        estado["kibana_conectado"] = conectou
+        if conectou:
+            estado["status"] = "monitorando"
+            estado["mensagem"] = "Conectado ao Kibana"
+        else:
+            estado["status"] = "erro_conexao"
+            estado["mensagem"] = "Falha ao conectar no Kibana"
+
+    limpar_historicos_antigos()
+
+    log(f"Monitoramento iniciado! Intervalo: {config_inicial.get('intervalo_minutos', 5)} min", "OK")
+    log_arquivo("=== MONITORAMENTO INICIADO ===")
+
+    while True:
+        try:
+            # Reinicia dados no novo dia
+            dia_agora = datetime.now().strftime("%Y-%m-%d")
+            if dia_agora != dia_atual:
+                log("NOVO DIA! Historico e cache resetados.", "OK")
+                log_arquivo("=== NOVO DIA - RESET ===")
+                dia_atual = dia_agora
+                with historico_lock:
+                    historico_dia.clear()
+                    historico_palavras.clear()
+                with cache_lock:
+                    cache_anterior.clear()
+                with erros_confirmados_lock:
+                    erros_confirmados.clear()
+                with estado_lock:
+                    estado["erros_novos"] = []
+                carregar_historico()
+                atualizar_datas_relatorio(datetime.now().date())
+
+            with estado_lock:
+                estado["numero_verificacao"] += 1
+                estado["status"] = "verificando"
+                num = estado["numero_verificacao"]
+
+            log(f"--- Verificacao #{num} ---", "INFO")
+
+            erros_novos_ciclo = []
+
+            config = obter_config_snapshot()
+            if not config:
+                raise Exception("Configuracao nao carregada")
+
+            intervalo = int(config.get("intervalo_minutos", 5))
+            if intervalo < 1:
+                intervalo = 1
+
+            # Processa links ativos
+            for link in config.get("links", []):
+                if not link.get("ativo", True):
+                    continue
+
+                nome = link["nome"]
+                log(f"  Acessando: {nome}...", "INFO")
+
+                with estado_lock:
+                    estado["consultas_status"][nome] = {
+                        "status": "consultando",
+                        "ultima_verificacao": datetime.now().strftime("%H:%M:%S"),
+                    }
+
+                dados, erro = acessar_link_kibana(link, config)
+
+                if erro:
+                    log(f"  {nome}: {erro}", "ERRO")
+                    with estado_lock:
+                        estado["consultas_status"][nome] = {
+                            "status": "erro",
+                            "ultima_verificacao": datetime.now().strftime("%H:%M:%S"),
+                            "erro": erro,
+                        }
+                    continue
+
+                novos, info = detectar_mudancas_link(link, dados, config)
+
+                # Guarda apenas erros realmente novos
+                novos_genuinos_link = []
+                for erro_novo in novos:
+                    if adicionar_ao_historico(erro_novo):
+                        erro_novo["hash"] = gerar_hash(f"{erro_novo['link']}|{erro_novo['mensagem']}")
+                        erros_novos_ciclo.append(erro_novo)
+                        novos_genuinos_link.append(erro_novo)
+                        log(f"  {nome}: NOVO ERRO - {erro_novo['mensagem'][:100]}", "NOVO")
+                        log_arquivo(f"NOVO | {nome} | {erro_novo['mensagem'][:200]}")
+
+                # Atualiza status do card no dashboard
+                with erros_confirmados_lock:
+                    confirmados_ciclo = set(erros_confirmados)
+                with estado_lock:
+                    pendentes_anteriores = [
+                        e for e in estado["erros_novos"]
+                        if e.get("link") == nome and e.get("hash", "") not in confirmados_ciclo
+                    ]
+                    status = "alerta" if (novos_genuinos_link or pendentes_anteriores) else "ok"
+                    estado["consultas_status"][nome] = {
+                        "status": status,
+                        "ultima_verificacao": datetime.now().strftime("%H:%M:%S"),
+                        "total_encontrados": info["numero_hits"],
+                        "novos": len(novos_genuinos_link),
+                    }
+
+                if novos_genuinos_link:
+                    log(f"  {nome}: {len(novos_genuinos_link)} erro(s) novo(s) detectado(s)!", "NOVO")
+                else:
+                    log(f"  {nome}: Sem mudancas. Total no periodo: {info['numero_hits']}", "OK")
+
+            # Salva cache e historico
+            with cache_lock:
+                salvar_cache()
+            with historico_lock:
+                salvar_historico()
+                tamanho_historico = len(historico_dia)
+
+            # Atualiza estado global
+            proxima = (datetime.now() + timedelta(minutes=intervalo)).strftime("%H:%M:%S")
+            with estado_lock:
+                estado["status"] = "monitorando"
+                estado["ultima_verificacao"] = datetime.now().strftime("%H:%M:%S")
+                estado["proxima_verificacao"] = proxima
+                hashes_existentes = {e.get("hash", "") for e in estado["erros_novos"]}
+                for e in erros_novos_ciclo:
+                    if e.get("hash", "") and e["hash"] not in hashes_existentes:
+                        estado["erros_novos"].append(e)
+                        hashes_existentes.add(e["hash"])
+                estado["erros_hoje_total"] = tamanho_historico
+                estado["historico_tamanho"] = tamanho_historico
+                if len(erros_novos_ciclo) > 0:
+                    estado["mensagem"] = f"{len(erros_novos_ciclo)} mudanca(s) detectada(s)!"
+                else:
+                    estado["mensagem"] = "Nenhuma mudanca detectada"
+
+            total_novos = len(erros_novos_ciclo)
+            if total_novos > 0:
+                log(f"  >> {total_novos} MUDANCA(S) DETECTADA(S)!", "NOVO")
+            else:
+                log(f"  >> Sem mudancas. Historico: {tamanho_historico} item(ns) hoje.", "OK")
+
+            log(f"  Proxima verificacao as {proxima}", "INFO")
+
+        except Exception as e:
+            log(f"Erro no ciclo: {e}", "ERRO")
+            import traceback
+            traceback.print_exc()
+            with estado_lock:
+                estado["status"] = "erro"
+                estado["mensagem"] = f"Erro: {str(e)[:200]}"
+
+        # Espera o proximo ciclo
+        config_sleep = obter_config_snapshot() or {}
+        intervalo_sleep = int(config_sleep.get("intervalo_minutos", 5))
+        if intervalo_sleep < 1:
+            intervalo_sleep = 1
+        time.sleep(intervalo_sleep * 60)
+
+
+# Servidor web
+
+class DashboardHandler(SimpleHTTPRequestHandler):
+    """Handler HTTP que serve o dashboard e a API de status."""
+
+    def log_message(self, format, *args):
+        """Silencia os logs do servidor HTTP."""
+        pass
+
+    def do_GET(self):
+        parsed = urlparse(self.path)
+        caminho = parsed.path
+        if caminho == "/" or caminho == "/dashboard":
+            self.servir_dashboard()
+        elif caminho == "/api/status":
+            self.servir_api_status()
+        elif caminho == "/api/config":
+            self.servir_api_config()
+        elif caminho == "/api/historico":
+            self.servir_api_historico(parsed.query)
+        elif caminho == "/api/historico/datas":
+            self.servir_api_historico_datas()
+        elif caminho == "/api/historico/resumo":
+            self.servir_api_historico_resumo()
+        else:
+            self.send_error(404)
+
+    def do_POST(self):
+        if self.path == "/api/config/salvar":
+            self.salvar_config_dashboard()
+        elif self.path == "/api/config/salvar-link":
+            self.salvar_link_dashboard()
+        elif self.path == "/api/config/remover-link":
+            self.remover_link_dashboard()
+        elif self.path == "/api/erros/confirmar":
+            self.confirmar_erro()
+        elif self.path == "/api/erros/confirmar-todos":
+            self.confirmar_todos_erros()
+        else:
+            self.send_error(404)
+
+    def _responder_json(self, status_code, payload):
+        self.send_response(status_code)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps(payload, ensure_ascii=False).encode("utf-8"))
+
+    def _ler_json_body(self):
+        tamanho = int(self.headers.get("Content-Length", 0))
+        if tamanho <= 0:
+            return {}
+        bruto = self.rfile.read(tamanho).decode("utf-8", errors="replace")
+        return json.loads(bruto) if bruto.strip() else {}
+
+    def servir_dashboard(self):
+        try:
+            with open(DASHBOARD_PATH, "r", encoding="utf-8") as f:
+                conteudo = f.read()
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Cache-Control", "no-cache")
+            self.end_headers()
+            self.wfile.write(conteudo.encode("utf-8"))
+        except FileNotFoundError:
+            self.send_response(500)
+            self.end_headers()
+            self.wfile.write(b"dashboard.html nao encontrado!")
+
+    def servir_api_status(self):
+        with estado_lock:
+            dados = dict(estado)
+        # Filtra erros ja confirmados como enviados
+        with erros_confirmados_lock:
+            confirmados_snapshot = set(erros_confirmados)
+        dados["erros_novos"] = [
+            e for e in dados.get("erros_novos", [])
+            if e.get("hash", "") not in confirmados_snapshot
+        ]
+        dados["hora_servidor"] = datetime.now().strftime("%H:%M:%S")
+        dados["data_servidor"] = datetime.now().strftime("%d/%m/%Y")
+
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Cache-Control", "no-cache")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps(dados, ensure_ascii=False).encode("utf-8"))
+
+    def servir_api_config(self):
+        try:
+            config = carregar_config()
+            if config:
+                safe = {
+                    "kibana_url": config.get("kibana_url", ""),
+                    "intervalo_minutos": config.get("intervalo_minutos", 5),
+                    "metodo_deteccao": config.get("metodo_deteccao", "conteudo"),
+                    "tocar_som": config.get("tocar_som", True),
+                    "consultas": [
+                        {
+                            "nome": c.get("nome", ""),
+                            "descricao": c.get("descricao", ""),
+                            "url": c.get("url", ""),
+                            "ativo": c.get("ativo", True),
+                        }
+                        for c in config.get("links", [])
+                    ],
+                }
+                dados = safe
+            else:
+                dados = {"erro": "Falha ao carregar config"}
+        except Exception as e:
+            dados = {"erro": str(e)}
+
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps(dados, ensure_ascii=False).encode("utf-8"))
+
+    def salvar_config_dashboard(self):
+        try:
+            payload = self._ler_json_body()
+            config = obter_config_snapshot()
+            if not config:
+                return self._responder_json(400, {"ok": False, "erro": "Config atual invalida"})
+
+            if "intervalo_minutos" in payload:
+                intervalo = int(payload.get("intervalo_minutos", 5))
+                config["intervalo_minutos"] = max(1, intervalo)
+            if "metodo_deteccao" in payload:
+                metodo = str(payload.get("metodo_deteccao", "conteudo"))
+                config["metodo_deteccao"] = metodo if metodo in ["conteudo", "contador"] else "conteudo"
+            if "tocar_som" in payload:
+                config["tocar_som"] = bool(payload.get("tocar_som"))
+
+            ok, erro = atualizar_config_runtime(config)
+            if not ok:
+                return self._responder_json(500, {"ok": False, "erro": erro})
+
+            return self._responder_json(200, {"ok": True, "mensagem": "Configuração salva"})
+        except Exception as e:
+            return self._responder_json(500, {"ok": False, "erro": str(e)})
+
+    def salvar_link_dashboard(self):
+        try:
+            payload = self._ler_json_body()
+            nome = str(payload.get("nome", "")).strip()
+            descricao = str(payload.get("descricao", "")).strip()
+            url = str(payload.get("url", "")).strip()
+            ativo = bool(payload.get("ativo", True))
+            nome_original = str(payload.get("nome_original", "")).strip()
+
+            if not nome or not url:
+                return self._responder_json(400, {"ok": False, "erro": "Nome e URL são obrigatórios"})
+
+            config = obter_config_snapshot()
+            if not config:
+                return self._responder_json(400, {"ok": False, "erro": "Config atual invalida"})
+
+            links = config.get("links", [])
+
+            if nome_original:
+                alvo = next((l for l in links if str(l.get("nome", "")).strip() == nome_original), None)
+                if alvo:
+                    alvo["nome"] = nome
+                    alvo["descricao"] = descricao
+                    alvo["url"] = url
+                    alvo["ativo"] = ativo
+                else:
+                    links.append({"nome": nome, "descricao": descricao, "url": url, "ativo": ativo})
+            else:
+                existente = next((l for l in links if str(l.get("nome", "")).strip() == nome), None)
+                if existente:
+                    existente["descricao"] = descricao
+                    existente["url"] = url
+                    existente["ativo"] = ativo
+                else:
+                    links.append({"nome": nome, "descricao": descricao, "url": url, "ativo": ativo})
+
+            config["links"] = links
+            ok, erro = atualizar_config_runtime(config)
+            if not ok:
+                return self._responder_json(500, {"ok": False, "erro": erro})
+
+            return self._responder_json(200, {"ok": True, "mensagem": "Link salvo"})
+        except Exception as e:
+            return self._responder_json(500, {"ok": False, "erro": str(e)})
+
+    def confirmar_erro(self):
+        """Marca um erro como 'enviado', removendo-o da lista de erros novos."""
+        try:
+            payload = self._ler_json_body()
+            hash_erro = str(payload.get("hash", "")).strip()
+            if not hash_erro:
+                return self._responder_json(400, {"ok": False, "erro": "Hash ausente"})
+            with erros_confirmados_lock:
+                erros_confirmados.add(hash_erro)
+            salvar_erros_confirmados()
+            _recalcular_status_links_confirmados()
+            return self._responder_json(200, {"ok": True})
+        except Exception as e:
+            return self._responder_json(500, {"ok": False, "erro": str(e)})
+
+    def confirmar_todos_erros(self):
+        """Marca como enviados os hashes recebidos no body (ou todos se nao houver lista)."""
+        try:
+            payload = self._ler_json_body()
+            hashes_payload = payload.get("hashes", None)
+            if hashes_payload is not None:
+                hashes = [str(h) for h in hashes_payload if h]
+            else:
+                with estado_lock:
+                    hashes = [e.get("hash", "") for e in estado.get("erros_novos", [])]
+            with erros_confirmados_lock:
+                for h in hashes:
+                    if h:
+                        erros_confirmados.add(h)
+            salvar_erros_confirmados()
+            _recalcular_status_links_confirmados()
+            return self._responder_json(200, {"ok": True, "confirmados": len(hashes)})
+        except Exception as e:
+            return self._responder_json(500, {"ok": False, "erro": str(e)})
+
+    def remover_link_dashboard(self):
+        try:
+            payload = self._ler_json_body()
+            nome = str(payload.get("nome", "")).strip()
+            if not nome:
+                return self._responder_json(400, {"ok": False, "erro": "Nome é obrigatório"})
+
+            config = obter_config_snapshot()
+            if not config:
+                return self._responder_json(400, {"ok": False, "erro": "Config atual invalida"})
+
+            links = config.get("links", [])
+            config["links"] = [l for l in links if str(l.get("nome", "")).strip() != nome]
+
+            ok, erro = atualizar_config_runtime(config)
+            if not ok:
+                return self._responder_json(500, {"ok": False, "erro": erro})
+
+            with cache_lock:
+                cache_anterior.pop(nome, None)
+                salvar_cache()
+
+            with estado_lock:
+                estado["consultas_status"].pop(nome, None)
+                estado["links_status"].pop(nome, None)
+
+            return self._responder_json(200, {"ok": True, "mensagem": "Link removido"})
+        except Exception as e:
+            return self._responder_json(500, {"ok": False, "erro": str(e)})
+
+    # ── API Historico ──────────────────────────────────────────────
+
+    def servir_api_historico(self, query_string):
+        """Retorna erros do historico de uma data especifica."""
+        try:
+            params = parse_qs(query_string)
+            data = params.get("data", [datetime.now().strftime("%Y-%m-%d")])[0]
+            # Validar formato da data para evitar path traversal
+            datetime.strptime(data, "%Y-%m-%d")
+            arquivo = HISTORICO_DIR / f"erros_{data}.json"
+            if not arquivo.exists():
+                return self._responder_json(200, {"data": data, "erros": [], "total": 0})
+            with open(arquivo, "r", encoding="utf-8") as f:
+                dados = json.load(f)
+            erros_lista = []
+            for h, info in dados.items():
+                erros_lista.append({
+                    "hash": h,
+                    "consulta": info.get("consulta", info.get("link", "")),
+                    "mensagem": info.get("mensagem", ""),
+                    "hora_detectado": info.get("hora_detectado", ""),
+                    "timestamp_erro": info.get("timestamp_erro", ""),
+                    "link_kibana": info.get("link_kibana", ""),
+                })
+            erros_lista.sort(key=lambda e: e.get("hora_detectado", ""), reverse=True)
+            return self._responder_json(200, {"data": data, "erros": erros_lista, "total": len(erros_lista)})
+        except ValueError:
+            return self._responder_json(400, {"erro": "Formato de data invalido. Use YYYY-MM-DD"})
+        except Exception as e:
+            return self._responder_json(500, {"erro": str(e)})
+
+    def servir_api_historico_datas(self):
+        """Lista todas as datas disponiveis no historico."""
+        try:
+            HISTORICO_DIR.mkdir(exist_ok=True)
+            arquivos = sorted(HISTORICO_DIR.glob("erros_*.json"), reverse=True)
+            datas = []
+            for arq in arquivos:
+                nome = arq.stem  # erros_2026-03-26
+                if nome.startswith("erros_"):
+                    datas.append(nome[6:])  # 2026-03-26
+            return self._responder_json(200, {"datas": datas})
+        except Exception as e:
+            return self._responder_json(500, {"erro": str(e)})
+
+    def servir_api_historico_resumo(self):
+        """Resumo de erros por data."""
+        try:
+            HISTORICO_DIR.mkdir(exist_ok=True)
+            arquivos = sorted(HISTORICO_DIR.glob("erros_*.json"), reverse=True)
+            resumo = []
+            for arq in arquivos:
+                nome = arq.stem
+                if not nome.startswith("erros_"):
+                    continue
+                data = nome[6:]
+                try:
+                    with open(arq, "r", encoding="utf-8") as f:
+                        dados = json.load(f)
+                    links_afetados = set()
+                    for info in dados.values():
+                        links_afetados.add(info.get("consulta", info.get("link", "?")))
+                    resumo.append({"data": data, "total_erros": len(dados), "total_links_afetados": len(links_afetados)})
+                except Exception:
+                    resumo.append({"data": data, "total_erros": 0, "total_links_afetados": 0})
+            return self._responder_json(200, {"resumo": resumo})
+        except Exception as e:
+            return self._responder_json(500, {"erro": str(e)})
+
+
+# Ponto de entrada
+
+def main():
+    print()
+    print("  ╔══════════════════════════════════════════════════════════╗")
+    print("  ║   MONITOR DE ERROS KIBANA - NOC (Web Scraping)          ║")
+    print("  ║   Dashboard Web + Monitoramento via URL                ║")
+    print("  ╚══════════════════════════════════════════════════════════╝")
+    print()
+
+    global runtime_config
+
+    config = carregar_config()
+    if not config:
+        print()
+        print("  ERRO: Corrija o config.json e execute novamente.")
+        input("  Pressione Enter para sair...")
+        sys.exit(1)
+
+    with config_lock:
+        runtime_config = config
+
+    with estado_lock:
+        estado["config_carregada"] = True
+
+    atualizar_datas_relatorio(datetime.now().date())
+
+    if not DASHBOARD_PATH.exists():
+        log("ERRO: dashboard.html nao encontrado!", "ERRO")
+        log(f"Esperado em: {DASHBOARD_PATH}", "ERRO")
+        input("  Pressione Enter para sair...")
+        sys.exit(1)
+
+    porta = config.get("porta_dashboard", 5000)
+
+    # Inicia monitoramento em background
+    thread_monitor = threading.Thread(
+        target=loop_monitoramento,
+        daemon=True,
+    )
+    thread_monitor.start()
+
+    # Inicia servidor HTTP
+    log(f"Dashboard disponivel em: http://localhost:{porta}", "OK")
+    log("Abrindo no navegador...", "INFO")
+    print()
+
+    try:
+        webbrowser.open(f"http://localhost:{porta}")
+    except Exception:
+        log("Nao foi possivel abrir o navegador automaticamente.", "AVISO")
+        log(f"Abra manualmente: http://localhost:{porta}", "AVISO")
+
+    try:
+        server = HTTPServer(("0.0.0.0", porta), DashboardHandler)
+        log(f"Servidor rodando na porta {porta}. Ctrl+C para parar.", "OK")
+        log_arquivo("=== SERVIDOR WEB INICIADO ===")
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print()
+        log("Servidor encerrado pelo usuario.", "AVISO")
+        log_arquivo("=== SERVIDOR ENCERRADO ===")
+    except OSError as e:
+        if "Address already in use" in str(e) or "10048" in str(e):
+            log(f"ERRO: Porta {porta} ja esta em uso!", "ERRO")
+            log(f"Altere 'porta_dashboard' no config.json", "AVISO")
+        else:
+            log(f"Erro ao iniciar servidor: {e}", "ERRO")
+        input("  Pressione Enter para sair...")
+
+
+if __name__ == "__main__":
+    main()

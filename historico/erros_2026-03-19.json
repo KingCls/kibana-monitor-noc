@@ -1,0 +1,802 @@
+{
+  "b4965573aeab6bbf32825c8b83507a02": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "[BANK_SUGGESTION] Erro ao processar identificação",
+    "hora_detectado": "19:02:00",
+    "timestamp_erro": "19:02:00",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "cbda3cfb63f172b73c25c29ca1f2c493": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "An I/O error occurred while sending to the backend.",
+    "hora_detectado": "19:02:00",
+    "timestamp_erro": "19:02:00",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "2c18d0fa23e24f52396947cdf38a20d9": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "[TASKS-LIST] Execução interrompida",
+    "hora_detectado": "19:02:00",
+    "timestamp_erro": "19:02:00",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "82efb48a13c93e68f3da5aa01ee83d66": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "[ERROR][CONNECTION_CREATION_FAILED] Ocorreu um erro tratado na requisição em connection-create: Usuário ou senha invalidos.",
+    "hora_detectado": "19:02:00",
+    "timestamp_erro": "19:02:00",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "f88b37c776405567cf62a89b160506cf": {
+    "consulta": "Level Error -> crm-push-notification-firebase",
+    "link": "Level Error -> crm-push-notification-firebase",
+    "mensagem": "[PUSH-NOTIFICATION-CONSUME] Firebase method returnMessageBuildMulticast failed data ResponseBodyMessage(idInvestor=2875086, token=erKx8BTFTuqNTP4VOE9H0Q:APA91bH_xaglJ-ModZKDC3az_3V778o8EJ339yeGpVKtYvhK2ZdNlkabpla7s62HZLXuiuonjGRHcDMp2-DrdGDzI8OYJn_0kBh1iAt8GLoUqWLBd63lfXk, topic=null, idCampaign=828, messageError=NotRegistered, dhEvent=2026-03-19T19:00:52.697352875, eventBodyJson=PushNotification(…",
+    "hora_detectado": "19:02:01",
+    "timestamp_erro": "19:02:01",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22crm-push-notification-firebase%22)%20AND%20config_file:%20(%22pusher-notifier%22)%20AND%20severity:%20(%22ERROR%22)%0AAND%20NOT%20stack_trace:%20(%22No%20tokens%20found%20for%20investor%22)%0AAND%20NOT%20stack_trace:%20(%22Requested%20Entity%20was%20not%20found%22)%0AAND%20NOT%20message:%20(%22Requested%20Entity%20was%20not%20found%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "afbf0725b45b7912e39e7ebbccd62402": {
+    "consulta": "Level Error -> crm-push-notification-firebase",
+    "link": "Level Error -> crm-push-notification-firebase",
+    "mensagem": "[PUSH-NOTIFICATION-CONSUME] Firebase method returnMessageBuildMulticast failed data ResponseBodyMessage(idInvestor=3232946, token=fxyM7ymhz0jujLZrldYHxy:APA91bEmPJwbwp5fDJCi73MYvXctV2dKVAUwXezfAafSgoSrjkS3QTagmTdf1ajSsVJvTh-D2_2l16iCfAFohTBRbtJjDQo5ZJmTrjm-Dd7rD71WYCzbBBQ, topic=null, idCampaign=831, messageError=Internal error encountered., dhEvent=2026-03-19T19:01:03.469127052, eventBodyJson=Pus…",
+    "hora_detectado": "19:02:01",
+    "timestamp_erro": "19:02:01",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22crm-push-notification-firebase%22)%20AND%20config_file:%20(%22pusher-notifier%22)%20AND%20severity:%20(%22ERROR%22)%0AAND%20NOT%20stack_trace:%20(%22No%20tokens%20found%20for%20investor%22)%0AAND%20NOT%20stack_trace:%20(%22Requested%20Entity%20was%20not%20found%22)%0AAND%20NOT%20message:%20(%22Requested%20Entity%20was%20not%20found%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "ebbceaab0405ed81c5503b0fbc9c07c3": {
+    "consulta": "order-risk-manager-daemon - RocketTrader -> Level Error",
+    "link": "order-risk-manager-daemon - RocketTrader -> Level Error",
+    "mensagem": "error trying to reconnect ",
+    "hora_detectado": "19:02:02",
+    "timestamp_erro": "19:02:02",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22order-risk-manager-daemon%22)%20AND%20config_file:%20(%22rockettrader%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "d914c97221f486d7742018b2324fbbdb": {
+    "consulta": "Level ERROR acima de 1 -> CARTEIRAS -> b3-investor-api-consumer",
+    "link": "Level ERROR acima de 1 -> CARTEIRAS -> b3-investor-api-consumer",
+    "mensagem": "Ocorreu um erro no processo. Stacktrace: javax.net.ssl.SSLHandshakeException: Received fatal alert: handshake_failure",
+    "hora_detectado": "19:02:03",
+    "timestamp_erro": "19:02:03",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22b3-investor-api-consumer%22)%20AND%20config_file:%20(%22carteiras%22)%20AND%20level:%20(%22error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "53dc150fd017d3c84976daf2e72a7383": {
+    "consulta": "Level ERROR -> snapshot-fii-job -> Marketdata",
+    "link": "Level ERROR -> snapshot-fii-job -> Marketdata",
+    "mensagem": "Cannot download file from: https://fnet.bmfbovespa.com.br/fnet/publico/downloadDocumento?id=1135549: {}",
+    "hora_detectado": "19:02:04",
+    "timestamp_erro": "19:02:04",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22snapshot-fii-job%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "53efbadba8b2d79a5021d1f4b9c9eea5": {
+    "consulta": "Level ERROR -> snapshot-fii-job -> Marketdata",
+    "link": "Level ERROR -> snapshot-fii-job -> Marketdata",
+    "mensagem": "Month XML failed for cnpj: 26614291000100",
+    "hora_detectado": "19:02:04",
+    "timestamp_erro": "19:02:04",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22snapshot-fii-job%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "d029754db45b08fe6502671213c972f8": {
+    "consulta": "Level ERROR -> api-granamap-transaction -> M.E",
+    "link": "Level ERROR -> api-granamap-transaction -> M.E",
+    "mensagem": "Ocorreu um erro na requisição",
+    "hora_detectado": "19:02:05",
+    "timestamp_erro": "19:02:05",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22api-granamap-transaction%22)%20AND%20severity:%20(%22error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "dff98b65d9303eff8f01ee05ddbeb883": {
+    "consulta": "Level ERROR -> stock-cache-job -> Marketdata",
+    "link": "Level ERROR -> stock-cache-job -> Marketdata",
+    "mensagem": "Uncaught throwable at application run",
+    "hora_detectado": "19:02:06",
+    "timestamp_erro": "19:02:06",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22stock-cache-job%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "46c22f3b23e5981b7fc0ba13311407b3": {
+    "consulta": "Level ERROR -> stock-cache-job -> Marketdata",
+    "link": "Level ERROR -> stock-cache-job -> Marketdata",
+    "mensagem": "uncaughtException: Thread[main,5,main]",
+    "hora_detectado": "19:02:06",
+    "timestamp_erro": "19:02:06",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22stock-cache-job%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "5e0091bc9ad73b7e183507d36d4e4b92": {
+    "consulta": "BinanceSafeKeeping-ws -> TRADEMAP -> Level-Error",
+    "link": "BinanceSafeKeeping-ws -> TRADEMAP -> Level-Error",
+    "mensagem": "Erro ao carregar custodia do idInvestor: 3379676! Excecao: valemobi.web.exceptions.RethrowException",
+    "hora_detectado": "19:02:07",
+    "timestamp_erro": "19:02:07",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22binancesafekeeping-ws%22)%20AND%20config_file:%20(%22trademap%22)%20AND%20level:%20(%22error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "a6b658df256784cdcdd1259b2d1d44fc": {
+    "consulta": "BinanceSafeKeeping-ws -> TRADEMAP -> Level-Error",
+    "link": "BinanceSafeKeeping-ws -> TRADEMAP -> Level-Error",
+    "mensagem": "Houve um erro durante a execução da requisição | Mensagem: {\"msg\":\"Invalid API-key, IP, or permissions for action.\",\"code\":-2015}",
+    "hora_detectado": "19:02:07",
+    "timestamp_erro": "19:02:07",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22binancesafekeeping-ws%22)%20AND%20config_file:%20(%22trademap%22)%20AND%20level:%20(%22error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "6bda00961334581568e90fd8739c4441": {
+    "consulta": "Level ERROR -> api-granamap-account -> M.E",
+    "link": "Level ERROR -> api-granamap-account -> M.E",
+    "mensagem": "[ERROR]-[500 INTERNAL_SERVER_ERROR \"Erro ao buscar saldos do usuario: ce959a3a-635f-45fb-90ab-370322b8ad0a\"; nested exception is valemobi.exception.InternalServerErrorException: 500 INTERNAL_SERVER_ERROR \"Erro ao buscar transactions\"; nested exception is valemobi.exception.InternalServerErrorException: 500 INTERNAL_SERVER_ERROR \"Ocorreu um erro inesperado com a aplicação\"] ao montar detail para us…",
+    "hora_detectado": "19:02:09",
+    "timestamp_erro": "19:02:09",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22api-granamap-account%22)%20AND%20severity:%20(%22error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "3624f98db12cae21c50d28a3c7e76a77": {
+    "consulta": "Level ERROR -> api-granamap-account -> M.E",
+    "link": "Level ERROR -> api-granamap-account -> M.E",
+    "mensagem": "Ocorreu um erro na requisição",
+    "hora_detectado": "19:02:09",
+    "timestamp_erro": "19:02:09",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22api-granamap-account%22)%20AND%20severity:%20(%22error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "dbec2902b0fd1a4338b06513ff588c7d": {
+    "consulta": "LEVEL ERROR > index-asterisk-application",
+    "link": "LEVEL ERROR > index-asterisk-application",
+    "mensagem": "Error in streaming, retry... ",
+    "hora_detectado": "19:02:10",
+    "timestamp_erro": "19:02:10",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-1h,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:lucene,query:'application_name:%20(%22index-asterisk-application%22)%20AND%20level:%20(%22Error%22)%20AND%20NOT%20message:%20(%22chegou%20sub%20de%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "3d635e44246e5e6e62647b85147aec2a": {
+    "consulta": "LEVEL ERROR > index-asterisk-application",
+    "link": "LEVEL ERROR > index-asterisk-application",
+    "mensagem": "Error no https://cheetah-stage.trademap.com.br/v2/subscribe - HTTP 412: Server returned HTTP response code: 412 for URL: https://cheetah-stage.trademap.com.br/v2/subscribe",
+    "hora_detectado": "19:02:10",
+    "timestamp_erro": "19:02:10",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-1h,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:lucene,query:'application_name:%20(%22index-asterisk-application%22)%20AND%20level:%20(%22Error%22)%20AND%20NOT%20message:%20(%22chegou%20sub%20de%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "3b53e62b098e574c40d324e0cc342c77": {
+    "consulta": "LEVEL ERROR > basket-asterisk-application (Vanilla)",
+    "link": "LEVEL ERROR > basket-asterisk-application (Vanilla)",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:02:10",
+    "timestamp_erro": "19:02:10",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22basket-asterisk-application%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "0b2a3e55b4c8ffc8555dfc40aa48e39b": {
+    "consulta": "LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro",
+    "mensagem": "ERROR SUB GRPC",
+    "hora_detectado": "19:02:12",
+    "timestamp_erro": "19:02:12",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-30m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22custody-performance-rocket-data-adapter%22)%20AND%20level:%20(%22Error%22)%20AND%20NOT%20message:%20(%22update%20de%20evento%20que%20era%20add:%20EventPerformanceGroupBy%5Bchannel%3DOPERATION,%20stockPerformance%3DStockPerformance%22)%20AND%20NOT%20message:%20(%22ignorando%20ordem%20que%20nao%20possui%20last_execution_price%20ORDER%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "d8ea5ee644293a0e01260e538a5adf2e": {
+    "consulta": "ERRO ao tratar a inserção de noticia -> Pusher-Job",
+    "link": "ERRO ao tratar a inserção de noticia -> Pusher-Job",
+    "mensagem": "Ocorreu um erro ao tratar a inserção de noticia: Connection reset",
+    "hora_detectado": "19:02:14",
+    "timestamp_erro": "19:02:14",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20%22pusher-job%22%20AND%20level:%20%22ERROR%22%20AND%20message:%20%22Ocorreu%20um%20erro%20ao%20tratar%20a%20inser%C3%A7%C3%A3o%20de%20noticia%22'),sort:!(!('@timestamp',desc)))"
+  },
+  "a98468db5f3e06470115f55a78757c77": {
+    "consulta": "Level ERROR -> updater-creation-appstore -> M.E",
+    "link": "Level ERROR -> updater-creation-appstore -> M.E",
+    "mensagem": "[INTEGRATE-RECENT-SUBSCRIPTIONS] error processing receipt 2176684",
+    "hora_detectado": "19:02:17",
+    "timestamp_erro": "19:02:17",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"updater-creation-appstore\")%20AND%20config_file:%20(\"minhas-economias\")%20AND%20level:(\"error\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "33dc4044ce225dc1579b4b9afbbf8f5f": {
+    "consulta": "LEVEL ERROR - 'Streaming nulo ou nao conectado' -> Custody-league-command-data-adapter -> Cheetah-Pro …",
+    "link": "LEVEL ERROR - 'Streaming nulo ou nao conectado' -> Custody-league-command-data-adapter -> Cheetah-Pro …",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:02:20",
+    "timestamp_erro": "19:02:20",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22custody-league-command-data-adapter%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "bc5e29c55287f5d8bf72473e4325ed09": {
+    "consulta": "Trademap-ws (RocketTrader) -> Level Error",
+    "link": "Trademap-ws (RocketTrader) -> Level Error",
+    "mensagem": "Uncaught exception",
+    "hora_detectado": "19:02:25",
+    "timestamp_erro": "19:02:25",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:f7436fec-5dc5-439d-a8db-7f6eaf57e942,interval:auto,query:(language:kuery,query:'application_name%20:%20%22trademap-ws%22%20%20AND%20level%20:%20%22error%22%20AND%20NOT%20message:%20(%22requestAccountRecoverWithType%23Erro%20ao%20tentar%20recuperar%20conta:%20%7B%7D%22)%20AND%20NOT%20message:(%22FlowException%22)%20AND%20NOT%20stack_trace:(%22valemobi.core.util.FlowException%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "d5455c9625db741a6dddd6f995c712ad": {
+    "consulta": "LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:03:52",
+    "timestamp_erro": "19:03:52",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-1h,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(\"custody-simulator-league-data-adapter\")%20AND%20level:%20(\"Error\")%20AND%20NOT%20message:%20(\"Streaming%20nulo%20ou%20nao%20conectado\")%20AND%20NOT%20message:%20(\"Tamanho%20do%20snap%20de\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "d114fd7fffe27fd53fab1323b92097fe": {
+    "consulta": "Level ERROR -> snapshot-fii-job -> Marketdata",
+    "link": "Level ERROR -> snapshot-fii-job -> Marketdata",
+    "mensagem": "Quarter XML failed for cnpj: 26614291000100",
+    "hora_detectado": "19:03:56",
+    "timestamp_erro": "19:03:56",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22snapshot-fii-job%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "118f7415a1432621c7e15d0afafadad9": {
+    "consulta": "LEVEL ERROR > index-asterisk-application",
+    "link": "LEVEL ERROR > index-asterisk-application",
+    "mensagem": "No price nor variation on message QUOTE|BPAC7|||",
+    "hora_detectado": "19:04:01",
+    "timestamp_erro": "19:04:01",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-1h,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:lucene,query:'application_name:%20(%22index-asterisk-application%22)%20AND%20level:%20(%22Error%22)%20AND%20NOT%20message:%20(%22chegou%20sub%20de%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "e10ea7dfd94b33541a9f50ca5c2ea954": {
+    "consulta": "LEVEL ERROR > index-asterisk-application",
+    "link": "LEVEL ERROR > index-asterisk-application",
+    "mensagem": "Could not close the connection.",
+    "hora_detectado": "19:04:01",
+    "timestamp_erro": "19:04:01",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-1h,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:lucene,query:'application_name:%20(%22index-asterisk-application%22)%20AND%20level:%20(%22Error%22)%20AND%20NOT%20message:%20(%22chegou%20sub%20de%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "32e88165ef427fc0032293296f44c862": {
+    "consulta": "LEVEL ERROR > basket-asterisk-application (Vanilla)",
+    "link": "LEVEL ERROR > basket-asterisk-application (Vanilla)",
+    "mensagem": "No price nor variation on message QUOTE|EMBR3:1|||",
+    "hora_detectado": "19:04:02",
+    "timestamp_erro": "19:04:02",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22basket-asterisk-application%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "d63a3a5964ff07a4bb58c10cee9c3dcc": {
+    "consulta": "LEVEL ERROR > basket-asterisk-application (Vanilla)",
+    "link": "LEVEL ERROR > basket-asterisk-application (Vanilla)",
+    "mensagem": "Could not close the connection.",
+    "hora_detectado": "19:04:02",
+    "timestamp_erro": "19:04:02",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22basket-asterisk-application%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "8eb121bb26902c26c98769a77e6ae695": {
+    "consulta": "LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro",
+    "mensagem": "Exceção durante streaming",
+    "hora_detectado": "19:05:42",
+    "timestamp_erro": "19:05:42",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-1h,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(\"custody-simulator-league-data-adapter\")%20AND%20level:%20(\"Error\")%20AND%20NOT%20message:%20(\"Streaming%20nulo%20ou%20nao%20conectado\")%20AND%20NOT%20message:%20(\"Tamanho%20do%20snap%20de\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "6eb47fd3c99f516352eac038047871df": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "Erro ao processar mensagem no tópico: recalculate-account-balances-topic, key: eca03696-d75e-43c1-9cb0-40937241561f-e160f207-8443-424a-9588-55652641a480",
+    "hora_detectado": "19:05:44",
+    "timestamp_erro": "19:05:44",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "bda66d4c682557133c40fd65799b22be": {
+    "consulta": "order-risk-manager-daemon - RocketTrader -> Level Error",
+    "link": "order-risk-manager-daemon - RocketTrader -> Level Error",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:05:46",
+    "timestamp_erro": "19:05:46",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22order-risk-manager-daemon%22)%20AND%20config_file:%20(%22rockettrader%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "0e852fd884934707e2018d3a4c156e2a": {
+    "consulta": "LEVEL ERROR > Custody-command-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR > Custody-command-data-adapter -> Cheetah-Pro",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:05:50",
+    "timestamp_erro": "19:05:50",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22custody-command-rocket-data-adapter%22)%20AND%20level:%20(%22Error%22)%20AND%20NOT%20message:%20(%22ignorando%20ordem%20que%20nao%20possui%20last_execution_price%22)%20AND%20NOT%20message:%20(%22Streaming%20nulo%20ou%20nao%20conectado%22)%20AND%20NOT%20message:%20(%22Tamanho%20do%20snap%20de%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "995e571676383f6b7aec90dd65a4de4d": {
+    "consulta": "LEVEL ERROR -> Data-Streamer-Rocket-6 - (PRO)",
+    "link": "LEVEL ERROR -> Data-Streamer-Rocket-6 - (PRO)",
+    "mensagem": "Error sending snapshot to 9381b310-9f6a-465d-b910-422b345d4cf6",
+    "hora_detectado": "19:05:56",
+    "timestamp_erro": "19:05:56",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:lucene,query:'application_name:%20%22data-streamer-rocket6-application%22%0AAND%20level:%20ERROR%0AAND%20NOT%20stack_trace:%20%22Connection%20refused%22%0AAND%20NOT%20message:%20%22Client%20with%20unrecognized%20token%22%0AAND%20NOT%20message:%20%22cliente%20n%C3%A3o%20autorizado%22%0AAND%20NOT%20message:%20%22sessao%20com%20cfid%22%0AAND%20NOT%20message:%20%22sem%20stats%22%0AAND%20NOT%20message:%20%22not_authenticated%22%0AAND%20NOT%20message:%20%22Exception%20no%20send%20update%20fast%20(proto),%20item%3Dnull%22%0AAND%20NOT%20message:%20%22erro%20ao%20criar%20cliente%22'),sort:!(!('@timestamp',desc)))"
+  },
+  "cc6b893d452e7db4d26fb882c6e5e89f": {
+    "consulta": "LEVEL ERROR > fundamentos-data-adapter-application - Cheetah-Pro",
+    "link": "LEVEL ERROR > fundamentos-data-adapter-application - Cheetah-Pro",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:05:57",
+    "timestamp_erro": "19:05:57",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22fundamentos-data-adapter-application%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "1cabab612cb987c0ce79d6f855cba6d6": {
+    "consulta": "Level ERROR -> api-granamap-support -> M.E",
+    "link": "Level ERROR -> api-granamap-support -> M.E",
+    "mensagem": "Ocorreu um erro na requisição",
+    "hora_detectado": "19:06:31",
+    "timestamp_erro": "19:06:31",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"api-granamap-support\")%20AND%20severity:%20(\"error\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "6bb1fe20144df41b75c9dd482933602e": {
+    "consulta": "Level ERROR -> crawler-captura-cvm-job -> Marketdata",
+    "link": "Level ERROR -> crawler-captura-cvm-job -> Marketdata",
+    "mensagem": "Cannot invoke \"java.math.BigDecimal.multiply(java.math.BigDecimal)\" because \"result\" is null",
+    "hora_detectado": "19:06:36",
+    "timestamp_erro": "19:06:36",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h%2Fh,to:now))&_a=(columns:!(application_name,level,message,stack_trace),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(\"crawler-captura-cvm-job\")%20AND%20level:%20(\"ERROR\")%20AND%20NOT%20message:%20(\"Range%20%5B-2,%200)%20out%20of%20bounds%20for%20length%200\")%20AND%20NOT%20message:%20(\"Unknown%20exception%20while%20handling:\")%20AND%20NOT%20message:%20(\"Unknown%20zip%20file:\")%20AND%20NOT%20message:%20(\"uncaughtException:%20Thread\")%20AND%20NOT%20message:%20(\"Uncaught%20throwable%20at%20application%20run\")%20AND%20NOT%20message:%20(\"Uncaught%20throwable%20at%20application%20cycle%20execution\")%20AND%20NOT%20message:%20(\"Unknown%20error%20while%20trying%20to%20get%20the%20list:\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "b2901642485746f6c7c47e86a409a97c": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "[ERROR][CANT_DELETE_TRANSACTION_TYPE_EXCEPTION] Ocorreu um erro tratado na requisição em delete-transaction-updating-deleted: Não é permitido excluir este tipo de transação",
+    "hora_detectado": "19:07:39",
+    "timestamp_erro": "19:07:39",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "c76bfe7fc5939a42e3e45f2be6e7dcd9": {
+    "consulta": "LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro",
+    "mensagem": "Erro no monitoramento de mensagens",
+    "hora_detectado": "19:09:37",
+    "timestamp_erro": "19:09:37",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-60m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22prop-desk-custody-data-adapter%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "f099a627e9ffff49222b6255bcf82962": {
+    "consulta": "LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro",
+    "mensagem": "Erro durante reconexão (tentativa #1): event executor terminated",
+    "hora_detectado": "19:09:37",
+    "timestamp_erro": "19:09:37",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-60m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22prop-desk-custody-data-adapter%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "ebd44ccd6a24cc4ff9de22c218ab5efc": {
+    "consulta": "LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro",
+    "mensagem": "Streaming nulo ou nao conectado",
+    "hora_detectado": "19:09:37",
+    "timestamp_erro": "19:09:37",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-60m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22prop-desk-custody-data-adapter%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "a92345e0f61c48b435f0309396421b5f": {
+    "consulta": "LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:09:37",
+    "timestamp_erro": "19:09:37",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-60m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22prop-desk-custody-data-adapter%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "d7993be1a9bfe9fb730f44e4740429ad": {
+    "consulta": "LEVEL ERROR > Custody-command-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR > Custody-command-data-adapter -> Cheetah-Pro",
+    "mensagem": "Exceção durante streaming",
+    "hora_detectado": "19:09:38",
+    "timestamp_erro": "19:09:38",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22custody-command-rocket-data-adapter%22)%20AND%20level:%20(%22Error%22)%20AND%20NOT%20message:%20(%22ignorando%20ordem%20que%20nao%20possui%20last_execution_price%22)%20AND%20NOT%20message:%20(%22Streaming%20nulo%20ou%20nao%20conectado%22)%20AND%20NOT%20message:%20(%22Tamanho%20do%20snap%20de%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "bc89e2298d9c19df26a460a00110825d": {
+    "consulta": "LEVEL ERROR > basket-asterisk-application (Vanilla)",
+    "link": "LEVEL ERROR > basket-asterisk-application (Vanilla)",
+    "mensagem": "Error no https://cheetah-stage.trademap.com.br/v2/subscribe - HTTP 412: Server returned HTTP response code: 412 for URL: https://cheetah-stage.trademap.com.br/v2/subscribe",
+    "hora_detectado": "19:09:43",
+    "timestamp_erro": "19:09:43",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22basket-asterisk-application%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "a360220c647ae11ca6f52ff8f1db4343": {
+    "consulta": "LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:09:44",
+    "timestamp_erro": "19:09:44",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-30m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22custody-performance-rocket-data-adapter%22)%20AND%20level:%20(%22Error%22)%20AND%20NOT%20message:%20(%22update%20de%20evento%20que%20era%20add:%20EventPerformanceGroupBy%5Bchannel%3DOPERATION,%20stockPerformance%3DStockPerformance%22)%20AND%20NOT%20message:%20(%22ignorando%20ordem%20que%20nao%20possui%20last_execution_price%20ORDER%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "43e33c955b5152af0e8a883914393c28": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "[ERROR][NOT_FOUND_EXCEPTION] Ocorreu um erro tratado na requisição em account-find-by-id-account: Conta não encontrada: bf827e8a-3144-46f3-8290-a7816e09a0bb",
+    "hora_detectado": "19:11:28",
+    "timestamp_erro": "19:11:28",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "f879ff878d0c475588a8c5c9ac946940": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "[TASKS-RETRY] Erro não recuperável na subtarefa #2",
+    "hora_detectado": "19:11:28",
+    "timestamp_erro": "19:11:28",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "e4f4e4075772b6a2de577e43731b7dc0": {
+    "consulta": "Level Error -> b3-options-rocket-data-adapter-application -> Cheetah-Pro",
+    "link": "Level Error -> b3-options-rocket-data-adapter-application -> Cheetah-Pro",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:11:37",
+    "timestamp_erro": "19:11:37",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22b3-options-rocket-data-adapter-application%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "0fe2e26dc18f6a760cfd0b9e08305771": {
+    "consulta": "Level Error -> b3-options-rocket-data-adapter-application -> Cheetah-Pro",
+    "link": "Level Error -> b3-options-rocket-data-adapter-application -> Cheetah-Pro",
+    "mensagem": "error trying to reconnect ",
+    "hora_detectado": "19:11:37",
+    "timestamp_erro": "19:11:37",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22b3-options-rocket-data-adapter-application%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "a37a15a54f0a84f381eef29ca2e58dc3": {
+    "consulta": "LEVEL ERROR -> Data-Streamer-Rocket-4 - (PRO)",
+    "link": "LEVEL ERROR -> Data-Streamer-Rocket-4 - (PRO)",
+    "mensagem": "order com erro: ORDER-MONITOR",
+    "hora_detectado": "19:11:45",
+    "timestamp_erro": "19:11:45",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-60m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20%22data-streamer-rocket4-application%22%0AAND%20level:%20ERROR%0AAND%20NOT%20stack_trace:%20%22Connection%20refused%22%0AAND%20NOT%20message:%20%22Client%20with%20unrecognized%20token%22%0AAND%20NOT%20message:%20%22cliente%20n%C3%A3o%20autorizado%22%0AAND%20NOT%20message:%20%22sessao%20com%20cfid%22%0AAND%20NOT%20message:%20%22sem%20stats%22%0AAND%20NOT%20message:%20%22not_authenticated%22%0AAND%20NOT%20message:%20%22Exception%20no%20send%20update%20fast%20(proto),%20item%3Dnull%22%0AAND%20NOT%20message:%20%22erro%20ao%20criar%20cliente%22'),sort:!(!('@timestamp',desc)))"
+  },
+  "00ebd61cbd37e4431ccf9482327a515f": {
+    "consulta": "LEVEL ERROR -> Data-Streamer-Rocket-1 - (PRO)",
+    "link": "LEVEL ERROR -> Data-Streamer-Rocket-1 - (PRO)",
+    "mensagem": "Error sending snapshot to 4f87d2c9-f2c1-4202-ae48-c03d1e5a9bb5",
+    "hora_detectado": "19:12:21",
+    "timestamp_erro": "19:12:21",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-60m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20\"data-streamer-rocket1-application\"%0AAND%20level:%20ERROR%0AAND%20NOT%20stack_trace:%20\"Connection%20refused\"%0AAND%20NOT%20message:%20\"Client%20with%20unrecognized%20token\"%0AAND%20NOT%20message:%20\"cliente%20não%20autorizado\"%0AAND%20NOT%20message:%20\"sessao%20com%20cfid\"%0AAND%20NOT%20message:%20\"sem%20stats\"%0AAND%20NOT%20message:%20\"not_authenticated\"%0AAND%20NOT%20message:%20\"Exception%20no%20send%20update%20fast%20(proto),%20item%3Dnull\"%0AAND%20NOT%20message:%20\"erro%20ao%20criar%20cliente\"'),sort:!(!('@timestamp',desc)))"
+  },
+  "ed9325ab3444af78f0ab4455d19ab90c": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "Batch entry 0 update \"account\".\"tb_balance\" set \"balance\"=('-3664.16'::numeric),\"date_insert\"=('2026-03-19 13:24:48.549881-03'),\"date_integrated\"=(NULL),\"date_update\"=('2026-03-19 19:13:53.672404-03'),\"external_balance_id\"=(NULL),\"id_account\"=('b7aed859-080e-4ecb-8206-e85412be5f71'::uuid),\"is_archived\"=('FALSE'::boolean),\"is_integrated\"=('FALSE'::boolean),\"last_month_balance\"=('0'::numeric),\"not_c…",
+    "hora_detectado": "19:15:19",
+    "timestamp_erro": "19:15:19",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "aba0771bd01da5e2a17c6c350446e3a2": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "Application exception overridden by rollback exception",
+    "hora_detectado": "19:15:19",
+    "timestamp_erro": "19:15:19",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "43a48c854a1b16d2566dded215ad9d23": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "Erro ao aplicar action RECURRENCE em projetadas: JDBC exception executing SQL [",
+    "hora_detectado": "19:15:19",
+    "timestamp_erro": "19:15:19",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "7c22a2dc80957b14d5e9adfdb1c3ac97": {
+    "consulta": "Level ERROR -> daily-anbima-job -> Marketdata",
+    "link": "Level ERROR -> daily-anbima-job -> Marketdata",
+    "mensagem": "Uncaught throwable at application run",
+    "hora_detectado": "19:15:27",
+    "timestamp_erro": "19:15:27",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-1h,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22daily-anbima-job%22)%20AND%20level:%20(%22ERROR%22)%20AND%20NOT%20logger_name:%20(%C2%A8valemobi.core.store.VStoreRedis%C2%A8)'),sort:!(!('@timestamp',desc)))"
+  },
+  "b08d2a6f8fc508838b9f5ca4ec0979b8": {
+    "consulta": "Authentication-ws - Minhas-Economias -> Level Error",
+    "link": "Authentication-ws - Minhas-Economias -> Level Error",
+    "mensagem": "Ocorreu um erro inesperado",
+    "hora_detectado": "19:15:52",
+    "timestamp_erro": "19:15:52",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-60m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:(\"authentication-ws\")%20%0AAND%20config_file:%20(\"minhas-economias\")%20%0AAND%20level:(\"ERROR\")%20%0AAND%20NOT%20(message:(\"Recaptcha%20token%20is%20empty\")%20OR%20message:(\"%5BRECAPTCHA%5D%20Validation%20exception\"))'),sort:!(!('@timestamp',desc)))"
+  },
+  "d67b970b8be51d393e43daf567650b1a": {
+    "consulta": "Level ERROR -> aa-fundamental-consumer-fifo-05 -> Marketdata",
+    "link": "Level ERROR -> aa-fundamental-consumer-fifo-05 -> Marketdata",
+    "mensagem": "Error : ERROR: syntax error at or near \")\"",
+    "hora_detectado": "19:18:57",
+    "timestamp_erro": "19:18:57",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22aa-fundamental-consumer-fifo-05%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "cae9463cf44a056ad1c3c19762199c27": {
+    "consulta": "LEVEL ERROR > Custody-command-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR > Custody-command-data-adapter -> Cheetah-Pro",
+    "mensagem": "Erro no monitoramento de mensagens",
+    "hora_detectado": "19:21:51",
+    "timestamp_erro": "19:21:51",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22custody-command-rocket-data-adapter%22)%20AND%20level:%20(%22Error%22)%20AND%20NOT%20message:%20(%22ignorando%20ordem%20que%20nao%20possui%20last_execution_price%22)%20AND%20NOT%20message:%20(%22Streaming%20nulo%20ou%20nao%20conectado%22)%20AND%20NOT%20message:%20(%22Tamanho%20do%20snap%20de%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "4eb690258facd260bdbd5c1dd9489bd7": {
+    "consulta": "LEVEL ERROR > Custody-command-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR > Custody-command-data-adapter -> Cheetah-Pro",
+    "mensagem": "Erro durante reconexão (tentativa #1): event executor terminated",
+    "hora_detectado": "19:21:51",
+    "timestamp_erro": "19:21:51",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22custody-command-rocket-data-adapter%22)%20AND%20level:%20(%22Error%22)%20AND%20NOT%20message:%20(%22ignorando%20ordem%20que%20nao%20possui%20last_execution_price%22)%20AND%20NOT%20message:%20(%22Streaming%20nulo%20ou%20nao%20conectado%22)%20AND%20NOT%20message:%20(%22Tamanho%20do%20snap%20de%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "fe3843dd2d7179f2d8e2a76170f1efde": {
+    "consulta": "LEVEL ERROR - 'Streaming nulo ou nao conectado' -> Custody-league-command-data-adapter -> Cheetah-Pro …",
+    "link": "LEVEL ERROR - 'Streaming nulo ou nao conectado' -> Custody-league-command-data-adapter -> Cheetah-Pro …",
+    "mensagem": "Streaming nulo ou nao conectado",
+    "hora_detectado": "19:22:00",
+    "timestamp_erro": "19:22:00",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22custody-league-command-data-adapter%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "5547a910c12fc73dab8ae061a054571e": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "[ERROR][BUDGET_CATEGORIES_VALUE_EXCEPTION] Ocorreu um erro tratado na requisição em budget-create: Valores de categorias ultrapassam o limite do orçamento.",
+    "hora_detectado": "19:23:21",
+    "timestamp_erro": "19:23:21",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "ab3bf96a59f3b7569f50d0d7c5e8dc01": {
+    "consulta": "Level ERROR -> snapshot-fii-job -> Marketdata",
+    "link": "Level ERROR -> snapshot-fii-job -> Marketdata",
+    "mensagem": "Yearly XML failed for cnpj: 17870926000130",
+    "hora_detectado": "19:23:24",
+    "timestamp_erro": "19:23:24",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22snapshot-fii-job%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "f71eaf32baf36c1f3a179d90b9037f14": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "Backoff FixedBackOff{interval=1000, currentAttempts=4, maxAttempts=3} exhausted for delete-account-topic-3@3621",
+    "hora_detectado": "19:24:56",
+    "timestamp_erro": "19:24:56",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "b3f30a1f0aeed89168f5299932919b03": {
+    "consulta": "LEVEL ERROR -> fix-custody-btg-daemon -> TRADEMAP",
+    "link": "LEVEL ERROR -> fix-custody-btg-daemon -> TRADEMAP",
+    "mensagem": "Houve um erro ao tentar executar a mensagem recebida: ActiveMQMapMessage {commandId = 3441997, responseRequired = false, messageId = ID:fix-server-btg-multibroker-6785ccd96c-2pbbd-34415-1772620805728-1:1:1:3:1147330, originalDestination = null, originalTransactionId = null, producerId = ID:fix-server-btg-multibroker-6785ccd96c-2pbbd-34415-1772620805728-1:1:1:3, destination = queue://FIX.CUSTODY.BT…",
+    "hora_detectado": "19:25:08",
+    "timestamp_erro": "19:25:08",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name.keyword:%20(%22fix-custody-btg-daemon%22)%20AND%20config_file:%20(%22trademap%22)%20AND%20level:%20(%22error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "2b2555450666304a574eeeef0135d9c7": {
+    "consulta": "LEVEL ERROR -> fix-custody-btg-daemon -> TRADEMAP",
+    "link": "LEVEL ERROR -> fix-custody-btg-daemon -> TRADEMAP",
+    "mensagem": "INSERT INTO",
+    "hora_detectado": "19:25:08",
+    "timestamp_erro": "19:25:08",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name.keyword:%20(%22fix-custody-btg-daemon%22)%20AND%20config_file:%20(%22trademap%22)%20AND%20level:%20(%22error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "4a2b57f1e42bce78f8836885711ad455": {
+    "consulta": "Level Error -> lina-connector",
+    "link": "Level Error -> lina-connector",
+    "mensagem": "Failed to create consent for stakeholder: 4bc317d7-9731-4ab3-aa4c-a23809320fbe",
+    "hora_detectado": "19:25:26",
+    "timestamp_erro": "19:25:26",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"lina-connector\")%20AND%20config_file:%20(\"hubbanking\")%20AND%20severity:%20(\"ERROR\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "72cb549097c56c9e8536fefe854c6e47": {
+    "consulta": "Level Error -> lina-connector",
+    "link": "Level Error -> lina-connector",
+    "mensagem": "Ocorreu um erro no processamento em paralelo de criar consentimento",
+    "hora_detectado": "19:25:26",
+    "timestamp_erro": "19:25:26",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"lina-connector\")%20AND%20config_file:%20(\"hubbanking\")%20AND%20severity:%20(\"ERROR\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "7c1505cfaf3f86a7427abb130729aa36": {
+    "consulta": "Level ERROR -> api-granamap-planning -> M.E",
+    "link": "Level ERROR -> api-granamap-planning -> M.E",
+    "mensagem": "Ocorreu um erro ao atualizar o token da super rico",
+    "hora_detectado": "19:26:55",
+    "timestamp_erro": "19:26:55",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h%2Fh,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(\"api-granamap-planning\")%20AND%20severity:%20(\"error\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "97b2769dd3abee4029cc0e2c21982524": {
+    "consulta": "LEVEL ERROR -> Internal-Application-Rocket-2 - (PRO)",
+    "link": "LEVEL ERROR -> Internal-Application-Rocket-2 - (PRO)",
+    "mensagem": "QUOTE-RAW-BVSP: erro ao dar UNSUB",
+    "hora_detectado": "19:29:44",
+    "timestamp_erro": "19:29:44",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20\"internal-application02\"%20AND%20level:%20ERROR%20AND%20NOT%20stack_trace:%20\"Connection%20refused\"%20AND%20NOT%20message:%20\"Client%20with%20unrecognized%20token\"%20AND%20NOT%20message:%20\"cliente%20não%20autorizado\"%20AND%20NOT%20message:%20\"sessao%20com%20cfid\"%20AND%20NOT%20message:%20\"sem%20stats\"%20AND%20NOT%20message:%20\"not_authenticated\"%20AND%20NOT%20message:%20\"Exception%20no%20send%20update%20fast%20(proto),%20item%3Dnull\"'),sort:!(!('@timestamp',desc)))"
+  },
+  "418b042d94354ec68b40b7eff2e3621e": {
+    "consulta": "LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> Custody-performance-rocket-data-adapter -> Cheetah-Pro",
+    "mensagem": "Exceção durante streaming",
+    "hora_detectado": "19:31:12",
+    "timestamp_erro": "19:31:12",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-30m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22custody-performance-rocket-data-adapter%22)%20AND%20level:%20(%22Error%22)%20AND%20NOT%20message:%20(%22update%20de%20evento%20que%20era%20add:%20EventPerformanceGroupBy%5Bchannel%3DOPERATION,%20stockPerformance%3DStockPerformance%22)%20AND%20NOT%20message:%20(%22ignorando%20ordem%20que%20nao%20possui%20last_execution_price%20ORDER%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "f959f913d8e962e1d7d827e1a583dcef": {
+    "consulta": "Level Error -> lina-connector",
+    "link": "Level Error -> lina-connector",
+    "mensagem": "Resource processing failed: ProcessLinaLoansResourceService",
+    "hora_detectado": "19:31:37",
+    "timestamp_erro": "19:31:37",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"lina-connector\")%20AND%20config_file:%20(\"hubbanking\")%20AND%20severity:%20(\"ERROR\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "8ffe00010dc38461856d3d4bb2553404": {
+    "consulta": "Level Error -> lina-connector",
+    "link": "Level Error -> lina-connector",
+    "mensagem": "ERROR: duplicate key value violates unique constraint \"tb_loan_contract_id_key\"",
+    "hora_detectado": "19:31:37",
+    "timestamp_erro": "19:31:37",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"lina-connector\")%20AND%20config_file:%20(\"hubbanking\")%20AND%20severity:%20(\"ERROR\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "e6fc79e52c9c3d92aba5f39f24d87274": {
+    "consulta": "Level Error -> lina-connector",
+    "link": "Level Error -> lina-connector",
+    "mensagem": "Failed to get credit cards for user: 4b40c1ea-9453-49f4-b439-0ef3e5616843",
+    "hora_detectado": "19:31:37",
+    "timestamp_erro": "19:31:37",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"lina-connector\")%20AND%20config_file:%20(\"hubbanking\")%20AND%20severity:%20(\"ERROR\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "d527f26706d1bd17f33f7be9f13fc370": {
+    "consulta": "Level Error -> lina-connector",
+    "link": "Level Error -> lina-connector",
+    "mensagem": "Failed to get variable incomes for user: 2b6737aa-53ec-4bf3-b93c-e0794463330c",
+    "hora_detectado": "19:31:37",
+    "timestamp_erro": "19:31:37",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"lina-connector\")%20AND%20config_file:%20(\"hubbanking\")%20AND%20severity:%20(\"ERROR\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "840b8d5e0264847208bd4987ac004013": {
+    "consulta": "Level Error -> lina-connector",
+    "link": "Level Error -> lina-connector",
+    "mensagem": "Failed to get loan payments for contract: 6890f5ec-e5f7-4b33-b464-1a5bb68ed3b0",
+    "hora_detectado": "19:33:09",
+    "timestamp_erro": "19:33:09",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"lina-connector\")%20AND%20config_file:%20(\"hubbanking\")%20AND%20severity:%20(\"ERROR\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "794e76727f97f21dacf1861e681ff3f2": {
+    "consulta": "Level Error -> lina-connector",
+    "link": "Level Error -> lina-connector",
+    "mensagem": "[LINA_CONNECTION_RESOURCE] Error fetching resources for connection d0d00ebe-056f-44d4-928e-131a8092b970",
+    "hora_detectado": "19:33:09",
+    "timestamp_erro": "19:33:09",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"lina-connector\")%20AND%20config_file:%20(\"hubbanking\")%20AND%20severity:%20(\"ERROR\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "2228475c4f970444b87250b332111893": {
+    "consulta": "Level Error -> lina-connector",
+    "link": "Level Error -> lina-connector",
+    "mensagem": "Failed to get resources for user: 38f53239-1d80-4681-a0ce-9fa020e62d30",
+    "hora_detectado": "19:33:09",
+    "timestamp_erro": "19:33:09",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"lina-connector\")%20AND%20config_file:%20(\"hubbanking\")%20AND%20severity:%20(\"ERROR\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "535f7188d85af0a05b97dc2f08229ee0": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "[ERROR][TRANSACTION_AND_CATEOGRY_DIFFERENT_TYPE_EXCEPTION] Ocorreu um erro tratado na requisição em transaction-update: Não é possível atribuir uma categoria com tipo diferente à esta transação.",
+    "hora_detectado": "19:34:10",
+    "timestamp_erro": "19:34:10",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "b30e705e8d22b6f17bcf255550cf0e70": {
+    "consulta": "Level Error -> lina-connector",
+    "link": "Level Error -> lina-connector",
+    "mensagem": "Batch entry 1 insert into lina_connector.tb_loan (amortization_scheduled,amortization_scheduled_additional_info,authorisation_server_id,brand_name,cet,cnpj_consignee,company_cnpj,connection_id,contract_amount,contract_date,contract_id,contract_number,contract_outstanding_balance,contract_remaining_number,created_at,currency,due_date,due_instalments,first_instalment_due_date,has_insurance_contracte…",
+    "hora_detectado": "19:34:43",
+    "timestamp_erro": "19:34:43",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"lina-connector\")%20AND%20config_file:%20(\"hubbanking\")%20AND%20severity:%20(\"ERROR\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "0358d0c8f75838dcc2d3778144a249b5": {
+    "consulta": "LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> Custody-simulator-league-data-adapter -> Cheetah-Pro",
+    "mensagem": "Falha na requisição de streaming",
+    "hora_detectado": "19:35:43",
+    "timestamp_erro": "19:35:43",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-1h,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(\"custody-simulator-league-data-adapter\")%20AND%20level:%20(\"Error\")%20AND%20NOT%20message:%20(\"Streaming%20nulo%20ou%20nao%20conectado\")%20AND%20NOT%20message:%20(\"Tamanho%20do%20snap%20de\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "f58e2ea05259114a0bedd85db7b8aecd": {
+    "consulta": "Binance-ws -> Permission - Trademap - LEVEL-ERROR",
+    "link": "Binance-ws -> Permission - Trademap - LEVEL-ERROR",
+    "mensagem": "[binancePermission-ws]  Error on get binancePermission: TokenInfo não encontrado... para o IdInvestor: 195766 e IdBroker: 111",
+    "hora_detectado": "19:36:09",
+    "timestamp_erro": "19:36:09",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22binancePermission-ws%22)%20AND%20config_file:%20(%22trademap%22)%20AND%20level:%20(%22error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "34c241c1b72c41b3eb392617140dabcb": {
+    "consulta": "LEVEL ERROR -> Data-Streamer-4 - (VANILLA)",
+    "link": "LEVEL ERROR -> Data-Streamer-4 - (VANILLA)",
+    "mensagem": "Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke \"java.util.List.iterator()\" because the return value of \"com.valemobi.cheetah.model.SubscriptionToUnsubDTO.getItems()\" is null] with root cause",
+    "hora_detectado": "19:36:13",
+    "timestamp_erro": "19:36:13",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-1h,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20\"data-streamer-vanilla4-application\"%0AAND%20level:%20ERROR%0AAND%20NOT%20stack_trace:%20\"Connection%20refused\"%0AAND%20NOT%20message:%20\"Client%20with%20unrecognized%20token\"%0AAND%20NOT%20message:%20\"cliente%20não%20autorizado\"%0AAND%20NOT%20message:%20\"sessao%20com%20cfid\"%0AAND%20NOT%20message:%20\"sem%20stats\"%0AAND%20NOT%20message:%20\"not_authenticated\"%0AAND%20NOT%20message:%20\"Erro%20ao%20dar%20sub%20no%20item\"'),sort:!(!('@timestamp',desc)))"
+  },
+  "82c3f1d974c7c4689f25e6446135bf9e": {
+    "consulta": "Trademap-ws (RocketTrader) -> Level Error",
+    "link": "Trademap-ws (RocketTrader) -> Level Error",
+    "mensagem": "Email do usuário não encontrado para o cliente 3320749",
+    "hora_detectado": "19:37:29",
+    "timestamp_erro": "19:37:29",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:f7436fec-5dc5-439d-a8db-7f6eaf57e942,interval:auto,query:(language:kuery,query:'application_name%20:%20%22trademap-ws%22%20%20AND%20level%20:%20%22error%22%20AND%20NOT%20message:%20(%22requestAccountRecoverWithType%23Erro%20ao%20tentar%20recuperar%20conta:%20%7B%7D%22)%20AND%20NOT%20message:(%22FlowException%22)%20AND%20NOT%20stack_trace:(%22valemobi.core.util.FlowException%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "117b19281731f176a5d3cba17477210a": {
+    "consulta": "Trademap-ws (RocketTrader) -> Level Error",
+    "link": "Trademap-ws (RocketTrader) -> Level Error",
+    "mensagem": "Erro ao enviar email de boas-vindas para o cliente 3320749",
+    "hora_detectado": "19:37:29",
+    "timestamp_erro": "19:37:29",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:f7436fec-5dc5-439d-a8db-7f6eaf57e942,interval:auto,query:(language:kuery,query:'application_name%20:%20%22trademap-ws%22%20%20AND%20level%20:%20%22error%22%20AND%20NOT%20message:%20(%22requestAccountRecoverWithType%23Erro%20ao%20tentar%20recuperar%20conta:%20%7B%7D%22)%20AND%20NOT%20message:(%22FlowException%22)%20AND%20NOT%20stack_trace:(%22valemobi.core.util.FlowException%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "9b01bc5150975dafd81d569b744713e7": {
+    "consulta": "LEVEL ERROR - 'Streaming nulo ou nao conectado' -> Custody-league-command-data-adapter -> Cheetah-Pro …",
+    "link": "LEVEL ERROR - 'Streaming nulo ou nao conectado' -> Custody-league-command-data-adapter -> Cheetah-Pro …",
+    "mensagem": "Exceção durante streaming",
+    "hora_detectado": "19:39:00",
+    "timestamp_erro": "19:39:00",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22custody-league-command-data-adapter%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "2f1c4c21f8f0443aab73ca3a02591775": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "[LIMIT_NOTIFICATION] Error building notification payload - userId: d7059d19-2d53-4a36-bae1-0bc8e55d27fc, limitId: 95bfc460-4c93-4b0c-b4d6-f9b8d9c6873e",
+    "hora_detectado": "19:41:55",
+    "timestamp_erro": "19:41:55",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "d1b27aadc5282dab1ed628a6aa127595": {
+    "consulta": "order-risk-manager-daemon - RocketTrader -> Level Error",
+    "link": "order-risk-manager-daemon - RocketTrader -> Level Error",
+    "mensagem": "Could not subscribe to list [com.valemobi.cheetahapi.api.streaming.models.SubscribeItems@16bea5e0]",
+    "hora_detectado": "19:41:56",
+    "timestamp_erro": "19:41:56",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22order-risk-manager-daemon%22)%20AND%20config_file:%20(%22rockettrader%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "93042a5468e37078ad6b9ad38d03f773": {
+    "consulta": "order-risk-manager-daemon - RocketTrader -> Level Error",
+    "link": "order-risk-manager-daemon - RocketTrader -> Level Error",
+    "mensagem": "Error no https://null/v2/subscribe",
+    "hora_detectado": "19:41:56",
+    "timestamp_erro": "19:41:56",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22order-risk-manager-daemon%22)%20AND%20config_file:%20(%22rockettrader%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "29c744763bdf2c4dd56e838718a8a0e8": {
+    "consulta": "LEVEL ERROR > fundamentos-data-adapter-application - Cheetah-Pro",
+    "link": "LEVEL ERROR > fundamentos-data-adapter-application - Cheetah-Pro",
+    "mensagem": "Streaming nulo ou nao conectado",
+    "hora_detectado": "19:45:10",
+    "timestamp_erro": "19:45:10",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22fundamentos-data-adapter-application%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "33f8b023d7c14890f8c829ef78be4fb9": {
+    "consulta": "LEVEL ERROR -> prop-desk-rel-perf-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> prop-desk-rel-perf-data-adapter -> Cheetah-Pro",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:48:14",
+    "timestamp_erro": "19:48:14",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-1h,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:lucene,query:'application_name:%20(%22prop-desk-rel-perf-data-adapter%22)%20AND%20level:%20(%22error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "914dd9ef53d9393c9a62078f180262fa": {
+    "consulta": "Level ERROR -> snapshot-fii-job -> Marketdata",
+    "link": "Level ERROR -> snapshot-fii-job -> Marketdata",
+    "mensagem": "Unknown error for cnpj 26499833000132:{}",
+    "hora_detectado": "19:51:17",
+    "timestamp_erro": "19:51:17",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22snapshot-fii-job%22)%20AND%20level:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "026e3b9463788ddc0b899eea934e8fc4": {
+    "consulta": "LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> prop-desk-custody-data-adapter -> Cheetah-Pro",
+    "mensagem": "Exceção durante streaming",
+    "hora_detectado": "19:51:17",
+    "timestamp_erro": "19:51:17",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-60m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:lucene,query:'application_name:%20(%22prop-desk-custody-data-adapter%22)%20AND%20level:%20(%22Error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "288bd2dba4595acc73d04b66fed5b778": {
+    "consulta": "LEVEL ERROR -> prop-desk-rel-perf-data-adapter -> Cheetah-Pro",
+    "link": "LEVEL ERROR -> prop-desk-rel-perf-data-adapter -> Cheetah-Pro",
+    "mensagem": "Exceção durante streaming",
+    "hora_detectado": "19:51:20",
+    "timestamp_erro": "19:51:20",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-1h,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:lucene,query:'application_name:%20(%22prop-desk-rel-perf-data-adapter%22)%20AND%20level:%20(%22error%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "e1fecc15008519e1ef48b81ff0d87f56": {
+    "consulta": "Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker",
+    "link": "Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:51:29",
+    "timestamp_erro": "19:51:29",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-7d%2Fd,to:now))&_a=(columns:!(application_name,level,message,stack_trace),filters:!(),grid:(columns:('@timestamp':(width:119),application_name:(width:195),level:(width:62),message:(width:425))),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"fix-server-mesa-euroinvest\")%20AND%20level:%20(\"error\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "ad38f94b834753fa99fc903e1271e8bd": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "[ERROR][CANNOT_DISABLE_TRANSACTION_EXCEPTION] Ocorreu um erro tratado na requisição em disable-transaction: Não é possível ignorar transação, pois se trata de uma transação manual. Id: bd9f933b-c7aa-4dff-96e9-af33d652071b - UserId: ef7be5eb-7079-4e09-b157-6230d3c22277",
+    "hora_detectado": "19:52:48",
+    "timestamp_erro": "19:52:48",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "ef4fcd25b152ea3dc1c75c8091e0daee": {
+    "consulta": "Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker",
+    "link": "Level Error - fixserver-mesa-euroinvest-dt - OMS-Multibroker",
+    "mensagem": "Exceção durante streaming",
+    "hora_detectado": "19:54:34",
+    "timestamp_erro": "19:54:34",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-7d%2Fd,to:now))&_a=(columns:!(application_name,level,message,stack_trace),filters:!(),grid:(columns:('@timestamp':(width:119),application_name:(width:195),level:(width:62),message:(width:425))),hideChart:!t,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(\"fix-server-mesa-euroinvest\")%20AND%20level:%20(\"error\")'),sort:!(!('@timestamp',desc)))"
+  },
+  "3310087ca17bdf51cce52edc985b5810": {
+    "consulta": "Level ERROR -> api-financial-core -> M.E",
+    "link": "Level ERROR -> api-financial-core -> M.E",
+    "mensagem": "[ERROR][BAD_REQUEST_EXCEPTION] Ocorreu um erro tratado na requisição em : For SEMANAL frequency, dayBegin must be NULL. Provided: 16",
+    "hora_detectado": "19:55:52",
+    "timestamp_erro": "19:55:52",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'16eb96f0-f8db-11f0-b91b-019fbe2fcc51',interval:auto,query:(language:kuery,query:'application_name:%20(%22api-financial-core%22)%20AND%20config_file:%20(%22minhaseconomias%22)%20AND%20severity:%20(%22ERROR%22)'),sort:!(!('@timestamp',desc)))"
+  },
+  "24c1642424707f10b6fd370d7dfefa03": {
+    "consulta": "Level Error -> fixserver-simulator - OMS-Multibroker",
+    "link": "Level Error -> fixserver-simulator - OMS-Multibroker",
+    "mensagem": "Error on streaming",
+    "hora_detectado": "19:57:42",
+    "timestamp_erro": "19:57:42",
+    "link_kibana": "https://kibana.valebroker.com.br/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-15m,to:now))&_a=(columns:!(),filters:!(),hideChart:!t,index:b10050e0-035a-11eb-83d8-a787fc7992ad,interval:auto,query:(language:kuery,query:'application_name:%20(%22fixserver-simulator%22)%20AND%20NOT%20application_name:%20(%22fixserver-simulator-stage%22)%20AND%20level:%20(%22error%22)%20AND%20NOT%20stack_trace:%20(%22Server%20returned%20HTTP%20response%20code:%20401%20for%20URL:%22)'),sort:!(!('@timestamp',desc)))"
+  }
+}
